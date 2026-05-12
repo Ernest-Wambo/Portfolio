@@ -4,30 +4,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Color Palette - Premium Deep Slate Dark Mode */
-  --bg-primary: #0a0e17;
-  --bg-secondary: #0f1624;
-  --surface-color: rgba(18, 26, 43, 0.7);
-  --surface-hover: rgba(26, 36, 59, 0.85);
-  
+  /* Color Palette - Lunar Deep Slate Dark Mode */
+  --bg-primary: #080c16;
+  --bg-secondary: #0d1422;
+  --surface-color: rgba(15, 22, 40, 0.72);
+  --surface-hover: rgba(22, 32, 56, 0.88);
+
   /* Curated Glowing Accents */
   --accent-cyan: #00f2fe;
   --accent-blue: #4facfe;
   --accent-indigo: #6366f1;
   --accent-pink: #ff0844;
   --accent-orange: #ffb199;
-  
+
+  /* Lunar / Moon Accents */
+  --accent-moon: #a8c5da;
+  --accent-silver: #c0ccd8;
+  --accent-star: #e8f2fb;
+
   /* Text Colors */
   --text-main: #f1f5f9;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
-  
+
   /* Borders & Shadows */
-  --border-color: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(0, 242, 254, 0.3);
-  --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
-  --shadow-glow: 0 0 25px rgba(0, 242, 254, 0.2);
-  
+  --border-color: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(168, 197, 218, 0.3);
+  --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 0 28px rgba(168, 197, 218, 0.18);
+
   /* Dimensions & Layout */
   --max-width: 1280px;
   --header-height: 80px;
@@ -46,6 +51,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -56,10 +62,26 @@ body {
   overflow-x: hidden;
   position: relative;
   min-height: 100vh;
-  background-image: 
+  background-image:
+    radial-gradient(ellipse at 78% 6%, rgba(168, 197, 218, 0.09) 0%, transparent 32%),
     radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.08) 0%, transparent 40%);
+    radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.06) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(168, 197, 218, 0.025) 0%, transparent 60%);
   background-attachment: fixed;
+}
+
+/* Ambient lunar glow — upper right (where the moon would be) */
+body::before {
+  content: '';
+  position: fixed;
+  top: -15%;
+  right: -8%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 197, 218, 0.055) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Custom Premium Scrollbar */
@@ -75,7 +97,7 @@ body {
   border: 2px solid var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-indigo);
+  background: var(--accent-moon);
 }
 
 /* Typography Utilities */
@@ -400,9 +422,9 @@ header.scrolled {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
+  background: linear-gradient(135deg, var(--accent-moon), var(--accent-indigo));
   filter: blur(80px);
-  opacity: 0.4;
+  opacity: 0.38;
   animation: pulse-glow 8s infinite alternate;
 }
 
@@ -1162,7 +1184,7 @@ footer {
 }
 
 /* ==========================================================================
-   ADORABLE ANIMATED WALKING PET (EVOLI / CUTE PIXEL STYLE)
+   ANIMATED WALKING FIRE MONKEY PET (INFERNAPE STYLE)
    ========================================================================== */
 .pet-wrapper {
   position: fixed;
@@ -1172,8 +1194,8 @@ footer {
   height: 65px;
   pointer-events: none;
   z-index: 9999;
-  background: linear-gradient(to top, rgba(10, 14, 23, 0.95) 0%, rgba(10, 14, 23, 0.6) 60%, transparent 100%);
-  border-top: 1px solid rgba(255, 8, 68, 0.2);
+  background: linear-gradient(to top, rgba(8, 12, 22, 0.96) 0%, rgba(8, 12, 22, 0.55) 60%, transparent 100%);
+  border-top: 1px solid rgba(255, 120, 0, 0.25);
   display: flex;
   align-items: flex-end;
 }
@@ -1182,16 +1204,15 @@ footer {
   position: absolute;
   bottom: 5px;
   left: -80px;
-  width: 55px;
-  height: 50px;
+  width: 60px;
+  height: 58px;
   animation: walk-across 20s linear infinite;
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 0 8px rgba(255, 8, 68, 0.6));
+  filter: drop-shadow(0 0 10px rgba(255, 120, 0, 0.75));
 }
 
-/* Evoli/Fox/Pet drawing using pure CSS & Animated SVG */
 .pet-body {
   animation: bounce-pet 0.35s ease-in-out infinite alternate;
   transform-origin: bottom center;
@@ -1230,13 +1251,13 @@ footer {
   }
 }
 
-/* Paw Print Trails */
+/* Paw Print Trails — fire orange */
 .paw-trail {
   position: absolute;
   bottom: 8px;
   width: 10px;
   height: 6px;
-  background: rgba(255, 8, 68, 0.3);
+  background: rgba(255, 110, 0, 0.4);
   border-radius: 50%;
   opacity: 0;
   animation: fade-paw 2s linear forwards;

@@ -83,48 +83,41 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Contact Form AJAX Handler (Formspree Integration)
   const contactForm = document.getElementById('contact-form');
   const formAlert = document.getElementById('form-alert');
+  const FALLBACK_EMAIL = 'ernest.wambo@univ-lorraine.fr';
 
   if (contactForm && formAlert) {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
-      // Update UI state during submission
+
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalBtnText = submitBtn.innerHTML;
-      submitBtn.innerHTML = 'Dispatching Payload... <i class="fa-solid fa-spinner fa-spin"></i>';
+      submitBtn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
       submitBtn.disabled = true;
 
       try {
         const response = await fetch(contactForm.action, {
           method: contactForm.method,
           body: new FormData(contactForm),
-          headers: {
-            'Accept': 'application/json'
-          }
+          headers: { 'Accept': 'application/json' }
         });
 
         if (response.ok) {
           formAlert.className = 'form-status success';
-          formAlert.innerHTML = '<i class="fa-solid fa-circle-check"></i> Payload dispatched successfully! I will read your message and respond shortly.';
+          formAlert.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message sent! I\'ll get back to you soon.';
           contactForm.reset();
         } else {
-          const data = await response.json();
+          const data = await response.json().catch(() => ({}));
           formAlert.className = 'form-status error';
-          if (Object.hasOwn(data, 'errors')) {
-            formAlert.innerHTML = data.errors.map(err => err.message).join(', ');
-          } else {
-            formAlert.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Error encountered while dispatching payload. Please retry.';
-          }
+          const errMsg = data.errors ? data.errors.map(err => err.message).join(', ') : '';
+          formAlert.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> ${errMsg || 'Could not send'} — email me directly at <a href="mailto:${FALLBACK_EMAIL}" style="color:inherit;text-decoration:underline;">${FALLBACK_EMAIL}</a>`;
         }
-      } catch (error) {
+      } catch {
         formAlert.className = 'form-status error';
-        formAlert.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Network anomaly detected. Could not connect to the email dispatch server.';
+        formAlert.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> Network error — reach me directly at <a href="mailto:${FALLBACK_EMAIL}" style="color:inherit;text-decoration:underline;">${FALLBACK_EMAIL}</a>`;
       } finally {
-        // Restore UI button state
         submitBtn.innerHTML = originalBtnText;
         submitBtn.disabled = false;
-        
-        // Auto-hide success alert after 8 seconds
+
         setTimeout(() => {
           if (formAlert.classList.contains('success')) {
             formAlert.style.display = 'none';

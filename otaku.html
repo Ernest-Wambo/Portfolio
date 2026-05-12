@@ -93,6 +93,13 @@
       font-weight: 600;
     }
 
+    .gradient-text-lumen {
+      background: linear-gradient(135deg, #f8fbff, var(--accent-silver), var(--accent-moon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
     .otaku-card-wide {
       grid-column: 1 / -1;
     }
@@ -370,6 +377,108 @@
       font-size: 0.83rem;
     }
 
+    .visual-poster-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .visual-poster {
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--bg-secondary);
+    }
+
+    .visual-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: var(--transition-smooth);
+    }
+
+    .visual-poster::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 12, 22, 0) 20%, rgba(8, 12, 22, 0.88) 100%);
+    }
+
+    .visual-poster:hover img {
+      transform: scale(1.04);
+    }
+
+    .visual-poster-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      padding: 1rem 0.95rem;
+    }
+
+    .visual-poster-caption strong {
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .visual-poster-caption span {
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+
+    .shot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .shot-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      min-height: 220px;
+      background: var(--bg-secondary);
+      border: 1px solid rgba(168, 85, 247, 0.16);
+    }
+
+    .shot-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: var(--transition-smooth);
+    }
+
+    .shot-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .shot-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8, 12, 22, 0.02) 25%, rgba(8, 12, 22, 0.9) 100%);
+    }
+
+    .shot-card span {
+      position: absolute;
+      left: 1rem;
+      bottom: 0.95rem;
+      z-index: 1;
+      color: var(--text-main);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
     .spotify-link-row {
       display: flex;
       flex-wrap: wrap;
@@ -460,7 +569,9 @@
       .split-list,
       .ritual-grid,
       .manhwa-grid,
-      .music-deck {
+      .music-deck,
+      .visual-poster-grid,
+      .shot-grid {
         grid-template-columns: 1fr;
       }
 
@@ -491,7 +602,7 @@
         <i class="fa-solid fa-eye-slash"></i> Hidden villain dossier unlocked
       </div>
       <h1 class="section-title"><span class="gradient-text-pink">Algebra</span> | <span
-          class="gradient-text-indigo">BlackPanther</span> | <span class="gradient-text">Lumen_Tx</span></h1>
+          class="gradient-text-indigo">BlackPanther</span> | <span class="gradient-text-lumen">Lumen_Tx</span></h1>
       <p class="section-subtitle">Anime alter ego archive. Chaotic, mysterious, funny, slightly villain-coded, and
         powered by elite taste, weekly episode loyalty, and absolutely zero VF propaganda.</p>
       <div class="otaku-alias-row">
@@ -606,6 +717,39 @@
           <p class="otaku-note">
             Respect also goes to the titles that pull up from the side and force themselves into the conversation.
           </p>
+          <div class="visual-poster-grid">
+            <div class="visual-poster">
+              <img src="https://static.wikia.nocookie.net/smart-characters-scaling/images/f/f4/Kiyotaka_Ayanokoji.png/revision/latest?cb=20231001225554"
+                alt="Classroom of the Elite visual">
+              <div class="visual-poster-caption">
+                <strong>Classroom of the Elite</strong>
+                <span>Cold eyes, colder agenda.</span>
+              </div>
+            </div>
+            <div class="visual-poster">
+              <img src="https://static.wikia.nocookie.net/wistoria/images/6/6a/Wistoria_Wand_and_Sword_Key_Visual_2.png/revision/latest?cb=20240528155942"
+                alt="Wistoria Wand and Sword visual">
+              <div class="visual-poster-caption">
+                <strong>Wistoria</strong>
+                <span>Pure fantasy climb energy.</span>
+              </div>
+            </div>
+            <div class="visual-poster">
+              <img src="https://static.wikia.nocookie.net/kimetsu-no-yaiba/images/e/e7/Infinity_Castle_Trilogy_Key_Visual_3.png/revision/latest?cb=20250903211854"
+                alt="Demon Slayer Infinity Castle visual">
+              <div class="visual-poster-caption">
+                <strong>Demon Slayer</strong>
+                <span>When the visuals refuse to behave.</span>
+              </div>
+            </div>
+            <div class="visual-poster">
+              <img src="https://r2.takopi.org/takopi/manga/cover-vol1.jpg" alt="Takopi's Original Sin cover">
+              <div class="visual-poster-caption">
+                <strong>Takopi's Original Sin</strong>
+                <span>Cute surface, emotional damage underneath.</span>
+              </div>
+            </div>
+          </div>
           <div class="split-list">
             <div class="split-list-block">
               <h5><i class="fa-solid fa-bolt" style="color: var(--accent-cyan);"></i> New gen radar</h5>
@@ -669,6 +813,38 @@
           <p class="otaku-note">
             A few picks deserve to be stated plainly because they never left the system.
           </p>
+          <div class="visual-poster-grid">
+            <div class="visual-poster">
+              <img src="https://www.pikpng.com/pngl/b/538-5388846_goku-mastered-ultra-instinct-vs-jiren-by-jaredsongohan.png"
+                alt="Goku vs Jiren visual">
+              <div class="visual-poster-caption">
+                <strong>Best Fight</strong>
+                <span>Goku vs Jiren was event television.</span>
+              </div>
+            </div>
+            <div class="visual-poster">
+              <img src="assets/Code-Geass-R2.jpg" alt="Code Geass Lelouch visual">
+              <div class="visual-poster-caption">
+                <strong>Best Speech</strong>
+                <span>Damocles. F.L.E.I.J.A. Authority.</span>
+              </div>
+            </div>
+            <div class="visual-poster">
+              <img src="assets/Naruto.jpg" alt="Naruto ending legacy visual">
+              <div class="visual-poster-caption">
+                <strong>Endings That Stayed</strong>
+                <span>Naruto still carries that final-residue effect.</span>
+              </div>
+            </div>
+            <div class="visual-poster">
+              <img src="https://static.wikia.nocookie.net/mappa/images/1/17/AOTFS_part_2_KV_3.png/revision/latest?cb=20211105155418"
+                alt="Attack on Titan final season visual">
+              <div class="visual-poster-caption">
+                <strong>Permanent Residue</strong>
+                <span>Attack on Titan and Dororo still linger.</span>
+              </div>
+            </div>
+          </div>
           <div class="otaku-list" style="margin-top: 0;">
             <div class="otaku-list-item">
               <h5><i class="fa-solid fa-fire" style="color: var(--accent-orange);"></i> Best fight</h5>
@@ -694,6 +870,18 @@
           <p class="otaku-note">
             This is where the manga and manhwa side stops pretending to be a side quest.
           </p>
+          <div class="shot-grid">
+            <div class="shot-card">
+              <img src="file:///C:/Users/wambo/OneDrive/Images/Screenshots/Screenshot%202026-05-12%20214848.png"
+                alt="Currently locked in manhwa shelf screenshot one">
+              <span>Archive Feed I</span>
+            </div>
+            <div class="shot-card">
+              <img src="file:///C:/Users/wambo/OneDrive/Images/Screenshots/Screenshot%202026-05-12%20214818.png"
+                alt="Currently locked in manhwa shelf screenshot two">
+              <span>Archive Feed II</span>
+            </div>
+          </div>
           <div class="manhwa-grid">
             <div class="manhwa-card">
               <span class="manhwa-chip"><i class="fa-solid fa-circle" style="font-size: 0.5rem; color: var(--accent-cyan);"></i> Locked In</span>
@@ -838,7 +1026,7 @@ Let's make peace with our Maker! It's time for us to go to war!</blockquote>
             <div class="speech-entry">
               <div class="speech-portrait">
                 <img
-                  src="https://static.wikia.nocookie.net/naruto/images/f/fd/Madara.png/revision/latest/scale-to-width-down/300?cb=20160115141947"
+                  src="https://static.wikia.nocookie.net/otaku_world_minecraft_mod/images/2/28/Madara_Uchiha.png/revision/latest?cb=20220709014005"
                   alt="Madara Uchiha portrait">
               </div>
               <div class="speech-copy">

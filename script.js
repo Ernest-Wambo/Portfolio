@@ -141,16 +141,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Secret Otaku Section — reveal only when navigated via #funny-me
-  const funnySection = document.getElementById('funny-me');
-  if (funnySection) {
-    const revealIfSecret = () => {
-      if (window.location.hash === '#funny-me') {
-        funnySection.style.display = 'block';
-        setTimeout(() => funnySection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
-      }
-    };
-    revealIfSecret();
-    window.addEventListener('hashchange', revealIfSecret);
-  }
 });

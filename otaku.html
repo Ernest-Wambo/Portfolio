@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Er_Wx — Secret Otaku Zone</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./index.css">
+
+  <style>
+    .otaku-page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .otaku-back-btn {
+      position: fixed;
+      top: 1.5rem;
+      left: 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 1.2rem;
+      background: rgba(15, 22, 40, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: var(--transition-smooth);
+      z-index: 100;
+    }
+
+    .otaku-back-btn:hover {
+      color: var(--accent-cyan);
+      border-color: rgba(0, 242, 254, 0.3);
+    }
+
+    .otaku-secret-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .otaku-secret-header .secret-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background: rgba(255, 8, 68, 0.1);
+      border: 1px solid rgba(255, 8, 68, 0.25);
+      border-radius: 20px;
+      color: var(--accent-pink);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .otaku-page-content {
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .otaku-note {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .otaku-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .otaku-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .otaku-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .otaku-list-item {
+      padding: 1rem 1.15rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .otaku-list-item h5 {
+      font-size: 0.98rem;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .otaku-list-item p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .power-level-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .power-level-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.6rem 1rem;
+      align-items: center;
+    }
+
+    .power-level-label {
+      font-size: 0.92rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .power-level-value {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .power-level-track {
+      grid-column: 1 / -1;
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .power-level-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(135deg, var(--accent-pink), var(--accent-orange));
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="./index.html" class="otaku-back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+  </a>
+
+  <div class="otaku-page-wrapper">
+    <div class="otaku-secret-header">
+      <div class="secret-label">
+        <i class="fa-solid fa-eye-slash"></i> You found the secret zone
+      </div>
+      <h1 class="section-title">Funny Me & <span class="gradient-text-pink">Otaku Side</span></h1>
+      <p class="section-subtitle">Because great data scientists run on caffeine, curiosity, and timeless anime
+        storylines.</p>
+    </div>
+
+    <div class="otaku-page-content">
+      <div class="funny-grid">
+
+        <!-- Anime Appreciation Card -->
+        <div class="otaku-card glass-panel">
+          <div class="otaku-header">
+            <h3>Anime Masterpieces</h3>
+            <span class="otaku-badge">Certified Otaku</span>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">
+            When I step away from model training and algorithmic complexity, these legendary series fuel my passion and
+            imagination:
+          </p>
+
+          <div class="anime-grid">
+            <div class="anime-item" title="Code Geass">
+              <img src="assets/Code-Geass-R2.jpg" alt="Code Geass — chess and strategy">
+              <div class="anime-caption">Code Geass</div>
+            </div>
+            <div class="anime-item" title="Fullmetal Alchemist: Brotherhood">
+              <img src="assets/fullMetal.jpg" alt="Fullmetal Alchemist — alchemy and science">
+              <div class="anime-caption">Fullmetal Alchemist</div>
+            </div>
+            <div class="anime-item" title="Naruto">
+              <img src="assets/Naruto.jpg" alt="Naruto — determination and journey">
+              <div class="anime-caption">Naruto</div>
+            </div>
+          </div>
+
+          <div
+            style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 1rem;">
+            <div style="font-size: 2rem; color: var(--accent-pink);">🔥</div>
+            <div>
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.1rem;">Ghost Companion</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">The little ghost is roaming this page too — watch
+                it zip around leaving a trail of purple stardust.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fun Small Talks Card -->
+        <div class="otaku-card glass-panel" style="justify-content: space-between;">
+          <div class="otaku-header">
+            <h3>Small Talk & Trivia</h3>
+            <span class="otaku-badge"
+              style="background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));">Dev Musings</span>
+          </div>
+
+          <div class="small-talk-box">
+            <div class="talk-bubble">
+              <h5><i class="fa-solid fa-chart-scatter-bubble" style="color: var(--accent-cyan);"></i> Data vs.
+                Intuition?</h5>
+              <p>Always data — but a great model still needs domain intuition to ask the right question in the first
+                place. The best DS lives at that intersection.</p>
+            </div>
+
+            <div class="talk-bubble">
+              <h5><i class="fa-solid fa-mug-hot" style="color: var(--accent-pink);"></i> Debugging Rituals</h5>
+              <p>Staring at loss curves at 2AM while listening to legendary anime battle OSTs to find that one rogue NaN
+                silently poisoning the whole pipeline.</p>
+            </div>
+
+            <div class="talk-bubble">
+              <h5><i class="fa-solid fa-moon" style="color: var(--accent-moon, #a8c5da);"></i> Ultimate Goal</h5>
+              <p>Building intelligent systems that illuminate hidden patterns in data — like moonlight revealing a
+                landscape that daylight never shows.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Epic Soundtracks Card -->
+        <div class="otaku-card glass-panel" style="justify-content: space-between;">
+          <div class="otaku-header">
+            <h3>Epic Soundtracks</h3>
+            <span class="otaku-badge"
+              style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-moon));">Focus Music</span>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+            The perfect background music for intense coding sessions and neural network training:
+          </p>
+          <div class="small-talk-box" style="margin-top: 0;">
+            <div class="talk-bubble" style="border-left-color: var(--accent-blue);">
+              <h5><i class="fa-solid fa-headphones" style="color: var(--accent-blue);"></i> Hiroyuki Sawano Mix</h5>
+              <p>When the code has bugs and the deadline is approaching, only epic drop beats can save the day.</p>
+            </div>
+            <div class="talk-bubble" style="border-left-color: var(--accent-moon);">
+              <h5><i class="fa-solid fa-music" style="color: var(--accent-moon);"></i> Lo-Fi Anime Beats</h5>
+              <p>For deep focus and feature engineering. Smooth, repetitive, and keeps the brain waves steady.</p>
+            </div>
+            <div class="talk-bubble" style="border-left-color: var(--accent-cyan);">
+              <h5><i class="fa-solid fa-record-vinyl" style="color: var(--accent-cyan);"></i> Nier Automata OST</h5>
+              <p>Technically a game, but the orchestrated melancholic tones are perfect for debugging complex systems.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Otaku Setup Card -->
+        <div class="otaku-card glass-panel" style="justify-content: space-between;">
+          <div class="otaku-header">
+            <h3>Battle Station</h3>
+            <span class="otaku-badge"
+              style="background: linear-gradient(135deg, var(--accent-indigo), var(--accent-pink));">Gear & Setup</span>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+            The command center where algorithms are born and anime is consumed at 2x speed:
+          </p>
+          <div class="small-talk-box" style="margin-top: 0;">
+            <div class="talk-bubble" style="border-left-color: var(--accent-indigo);">
+              <h5><i class="fa-solid fa-desktop" style="color: var(--accent-indigo);"></i> Dual Monitor Setup</h5>
+              <p>One vertical monitor for code and reading documentation, one ultrawide for data visualization... and
+                Discord.</p>
+            </div>
+            <div class="talk-bubble" style="border-left-color: var(--accent-pink);">
+              <h5><i class="fa-solid fa-keyboard" style="color: var(--accent-pink);"></i> Mechanical Keyboard</h5>
+              <p>Custom switches with an excessive amount of RGB. Because every line of code should sound like a
+                typewriter.</p>
+            </div>
+            <div class="talk-bubble" style="border-left-color: var(--accent-orange);">
+              <h5><i class="fa-solid fa-mug-saucer" style="color: var(--accent-orange);"></i> Endless Coffee</h5>
+              <p>The true fuel of any developer. My mug collection is slowly expanding to take over the entire desk.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Anime Lessons Card -->
+        <div class="otaku-card glass-panel" style="justify-content: space-between;">
+          <div class="otaku-header">
+            <h3>Anime Lessons for Data Science</h3>
+            <span class="otaku-badge"
+              style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));">Lore Meets
+              Logic</span>
+          </div>
+          <p class="otaku-note">
+            A few series actually map suspiciously well to how I think about projects, experiments, and staying
+            disciplined.
+          </p>
+          <div class="small-talk-box" style="margin-top: 0;">
+            <div class="talk-bubble" style="border-left-color: var(--accent-pink);">
+              <h5><i class="fa-solid fa-chess-king" style="color: var(--accent-pink);"></i> Code Geass = Strategy First
+              </h5>
+              <p>Before training anything expensive, define the win condition, the fallback, and the next move after the
+                next move.</p>
+            </div>
+            <div class="talk-bubble" style="border-left-color: var(--accent-orange);">
+              <h5><i class="fa-solid fa-flask" style="color: var(--accent-orange);"></i> Fullmetal = Equivalent Exchange
+              </h5>
+              <p>Good outputs require good inputs. Clean data, careful assumptions, and reproducible experiments are the
+                real alchemy.</p>
+            </div>
+            <div class="talk-bubble" style="border-left-color: var(--accent-cyan);">
+              <h5><i class="fa-solid fa-bullseye" style="color: var(--accent-cyan);"></i> Naruto = Consistency Wins</h5>
+              <p>Big breakthroughs usually come after a lot of boring repetition, stubborn iteration, and refusing to
+                quit too early.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Otaku Moodboard Card -->
+        <div class="otaku-card glass-panel" style="justify-content: space-between;">
+          <div class="otaku-header">
+            <h3>Otaku Moodboard</h3>
+            <span class="otaku-badge"
+              style="background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));">Favorite Vibes</span>
+          </div>
+          <p class="otaku-note">
+            The genres, themes, and tiny details that instantly make me lock in for "just one episode" and accidentally
+            watch five.
+          </p>
+          <div class="otaku-pill-row">
+            <span class="otaku-pill"><i class="fa-solid fa-brain" style="color: var(--accent-cyan);"></i> Mind
+              Games</span>
+            <span class="otaku-pill"><i class="fa-solid fa-bolt" style="color: var(--accent-pink);"></i> Shonen
+              Energy</span>
+            <span class="otaku-pill"><i class="fa-solid fa-fire" style="color: var(--accent-orange);"></i> Legendary
+              Power-Ups</span>
+            <span class="otaku-pill"><i class="fa-solid fa-book-open" style="color: var(--accent-moon);"></i> Deep
+              Worldbuilding</span>
+            <span class="otaku-pill"><i class="fa-solid fa-user-ninja" style="color: var(--accent-indigo);"></i>
+              Anti-Hero Leads</span>
+            <span class="otaku-pill"><i class="fa-solid fa-star" style="color: var(--accent-blue);"></i> Opening Themes
+              That Hit</span>
+          </div>
+          <div class="otaku-list">
+            <div class="otaku-list-item">
+              <h5><i class="fa-solid fa-eye" style="color: var(--accent-indigo);"></i> Favorite atmosphere</h5>
+              <p>That cinematic feeling where everything looks calm for one second and then the plot decides to explode.
+              </p>
+            </div>
+            <div class="otaku-list-item">
+              <h5><i class="fa-solid fa-scroll" style="color: var(--accent-orange);"></i> Favorite trope</h5>
+              <p>The quiet genius character who looks unbothered but has already simulated fifteen possible outcomes.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Watchlist Modes Card -->
+        <div class="otaku-card glass-panel" style="justify-content: space-between;">
+          <div class="otaku-header">
+            <h3>Watchlist Modes</h3>
+            <span class="otaku-badge"
+              style="background: linear-gradient(135deg, var(--accent-moon), var(--accent-indigo));">Binge Logic</span>
+          </div>
+          <p class="otaku-note">
+            Different moods call for different anime energy. This is basically the recommendation engine running in my
+            head.
+          </p>
+          <div class="otaku-list">
+            <div class="otaku-list-item">
+              <h5><i class="fa-solid fa-code" style="color: var(--accent-cyan);"></i> After a heavy coding session</h5>
+              <p>I want clean action, fast pacing, and a soundtrack that makes closing laptop tabs feel heroic.</p>
+            </div>
+            <div class="otaku-list-item">
+              <h5><i class="fa-solid fa-moon" style="color: var(--accent-moon);"></i> Late-night calm mode</h5>
+              <p>Something reflective, slightly melancholic, and visually rich enough to slow the whole brain down.</p>
+            </div>
+            <div class="otaku-list-item">
+              <h5><i class="fa-solid fa-users" style="color: var(--accent-pink);"></i> Group watch energy</h5>
+              <p>Maximum reactions, iconic scenes, impossible cliffhangers, and at least one moment where everyone
+                shouts at the screen.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Power Level Card -->
+        <div class="otaku-card glass-panel" style="justify-content: space-between;">
+          <div class="otaku-header">
+            <h3>Power Level Scanner</h3>
+            <span class="otaku-badge"
+              style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-indigo));">Over 9000?</span>
+          </div>
+          <p class="otaku-note">
+            A totally scientific measurement of how anime culture affects productivity, emotions, and unreasonable
+            optimism.
+          </p>
+          <div class="power-level-list">
+            <div class="power-level-item">
+              <div class="power-level-label">Opening song productivity boost</div>
+              <div class="power-level-value">96%</div>
+              <div class="power-level-track">
+                <div class="power-level-fill" style="width: 96%;"></div>
+              </div>
+            </div>
+            <div class="power-level-item">
+              <div class="power-level-label">Ability to stop at one episode</div>
+              <div class="power-level-value">12%</div>
+              <div class="power-level-track">
+                <div class="power-level-fill"
+                  style="width: 12%; background: linear-gradient(135deg, var(--accent-moon), var(--accent-blue));">
+                </div>
+              </div>
+            </div>
+            <div class="power-level-item">
+              <div class="power-level-label">Belief that friendship can fix the sprint</div>
+              <div class="power-level-value">88%</div>
+              <div class="power-level-track">
+                <div class="power-level-fill"
+                  style="width: 88%; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));">
+                </div>
+              </div>
+            </div>
+            <div class="power-level-item">
+              <div class="power-level-label">Likelihood of narrating a bug fix like a final arc</div>
+              <div class="power-level-value">91%</div>
+              <div class="power-level-track">
+                <div class="power-level-fill" style="width: 91%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Ghost Pet -->
+  <div class="pet-wrapper" id="ghost-pet-wrapper">
+    <div class="pet-character idle" id="ghost-pet-char">
+      <svg class="pet-body" viewBox="0 0 100 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="gp-ghostBody" cx="38%" cy="28%" r="65%">
+            <stop offset="0%" stop-color="#ffffff" />
+            <stop offset="35%" stop-color="#dde8ff" />
+            <stop offset="75%" stop-color="#b0c4f0" />
+            <stop offset="100%" stop-color="#8090cc" />
+          </radialGradient>
+          <radialGradient id="gp-ghostTint" cx="50%" cy="90%" r="55%">
+            <stop offset="0%" stop-color="#c084fc" stop-opacity="0.22" />
+            <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
+          </radialGradient>
+          <radialGradient id="gp-eyeGrd" cx="35%" cy="30%" r="60%">
+            <stop offset="0%" stop-color="#7c5cfc" />
+            <stop offset="50%" stop-color="#3b1f8c" />
+            <stop offset="100%" stop-color="#0d0520" />
+          </radialGradient>
+          <radialGradient id="gp-blushGrd" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#f0a0ff" stop-opacity="0.55" />
+            <stop offset="100%" stop-color="#f0a0ff" stop-opacity="0" />
+          </radialGradient>
+          <linearGradient id="gp-mouthGrd" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#3b1f8c" />
+            <stop offset="100%" stop-color="#0d0520" />
+          </linearGradient>
+          <filter id="gp-rimLight" x="-8%" y="-8%" width="116%" height="116%">
+            <feDropShadow dx="-1" dy="-1" stdDeviation="1.2" flood-color="#ffffff" flood-opacity="0.28" />
+          </filter>
+          <clipPath id="gp-ghostClip">
+            <path
+              d="M50,6 C72,6 88,24 88,46 L88,90 Q81,84 74,90 Q67,96 60,90 Q53,84 50,90 Q47,96 40,90 Q33,84 26,90 Q19,96 12,90 L12,46 C12,24 28,6 50,6 Z" />
+          </clipPath>
+        </defs>
+        <path
+          d="M50,6 C72,6 88,24 88,46 L88,90 Q81,84 74,90 Q67,96 60,90 Q53,84 50,90 Q47,96 40,90 Q33,84 26,90 Q19,96 12,90 L12,46 C12,24 28,6 50,6 Z"
+          fill="url(#gp-ghostBody)" filter="url(#gp-rimLight)" />
+        <path
+          d="M50,6 C72,6 88,24 88,46 L88,90 Q81,84 74,90 Q67,96 60,90 Q53,84 50,90 Q47,96 40,90 Q33,84 26,90 Q19,96 12,90 L12,46 C12,24 28,6 50,6 Z"
+          fill="url(#gp-ghostTint)" />
+        <ellipse cx="50" cy="85" rx="32" ry="12" fill="#8090cc" opacity="0.15" clip-path="url(#gp-ghostClip)" />
+        <ellipse cx="38" cy="26" rx="13" ry="8" fill="#ffffff" opacity="0.36" transform="rotate(-20,38,26)" />
+        <ellipse cx="10" cy="62" rx="5.5" ry="10" fill="url(#gp-ghostBody)" transform="rotate(-16,10,62)" />
+        <ellipse cx="10" cy="62" rx="5.5" ry="10" fill="url(#gp-ghostTint)" transform="rotate(-16,10,62)" />
+        <ellipse cx="8.5" cy="57" rx="2.2" ry="3.5" fill="#ffffff" opacity="0.32" transform="rotate(-16,8.5,57)" />
+        <ellipse cx="90" cy="62" rx="5.5" ry="10" fill="url(#gp-ghostBody)" transform="rotate(16,90,62)" />
+        <ellipse cx="90" cy="62" rx="5.5" ry="10" fill="url(#gp-ghostTint)" transform="rotate(16,90,62)" />
+        <ellipse cx="88.5" cy="57" rx="2.2" ry="3.5" fill="#ffffff" opacity="0.32" transform="rotate(16,88.5,57)" />
+        <ellipse cx="32" cy="62" rx="9" ry="5.5" fill="url(#gp-blushGrd)" />
+        <ellipse cx="68" cy="62" rx="9" ry="5.5" fill="url(#gp-blushGrd)" />
+        <ellipse cx="37" cy="50" rx="9" ry="10" fill="url(#gp-eyeGrd)" />
+        <ellipse cx="33.5" cy="46" rx="3.2" ry="3" fill="#ffffff" opacity="0.92" transform="rotate(-15,33.5,46)" />
+        <circle cx="42" cy="54" r="1.4" fill="#ffffff" opacity="0.5" />
+        <ellipse cx="37" cy="50" rx="9" ry="10" fill="none" stroke="#9b7dff" stroke-width="0.8" opacity="0.4" />
+        <ellipse cx="37" cy="50" rx="9" ry="0" fill="#c8d8f8">
+          <animate attributeName="ry" values="0;0;0;0;0;10;0;0;0;0" keyTimes="0;0.3;0.35;0.4;0.45;0.5;0.55;0.6;0.8;1"
+            dur="5s" repeatCount="indefinite" />
+        </ellipse>
+        <ellipse cx="63" cy="50" rx="9" ry="10" fill="url(#gp-eyeGrd)" />
+        <ellipse cx="59.5" cy="46" rx="3.2" ry="3" fill="#ffffff" opacity="0.92" transform="rotate(-15,59.5,46)" />
+        <circle cx="68" cy="54" r="1.4" fill="#ffffff" opacity="0.5" />
+        <ellipse cx="63" cy="50" rx="9" ry="10" fill="none" stroke="#9b7dff" stroke-width="0.8" opacity="0.4" />
+        <ellipse cx="63" cy="50" rx="9" ry="0" fill="#c8d8f8">
+          <animate attributeName="ry" values="0;0;0;0;0;10;0;0;0;0" keyTimes="0;0.3;0.35;0.4;0.45;0.5;0.55;0.6;0.8;1"
+            dur="5s" repeatCount="indefinite" />
+        </ellipse>
+        <path d="M42,67 Q47,73 50,69 Q53,73 58,67" fill="none" stroke="url(#gp-mouthGrd)" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" />
+        <ellipse cx="50" cy="71" rx="4" ry="2.5" fill="#f472b6" opacity="0.75" />
+        <ellipse cx="50" cy="70" rx="2.8" ry="1.2" fill="#fda4cf" opacity="0.5" />
+        <path
+          d="M50,6 C72,6 88,24 88,46 L88,90 Q81,84 74,90 Q67,96 60,90 Q53,84 50,90 Q47,96 40,90 Q33,84 26,90 Q19,96 12,90 L12,46 C12,24 28,6 50,6 Z"
+          fill="none" stroke="#ffffff" stroke-width="0.8" opacity="0.16" />
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const GHOST_W = 80;
+      const GHOST_H = 96;
+      const SPEED = 2.4;
+      const IDLE_MIN = 400;
+      const IDLE_MAX = 1000;
+      const TRAIL_INTERVAL = 55;
+      const TRAIL_DIST = 10;
+
+      const wrapper = document.getElementById('ghost-pet-wrapper');
+      const char = document.getElementById('ghost-pet-char');
+
+      let x = window.innerWidth / 2 - GHOST_W / 2;
+      let y = window.innerHeight / 2 - GHOST_H / 2;
+      let targetX = x, targetY = y;
+      let isIdle = true;
+      let idleTimer = null;
+      let lastTrailX = x, lastTrailY = y;
+      let lastTrailTime = 0;
+      let raf;
+
+      function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+
+      function pickTarget() {
+        const margin = 20;
+        targetX = clamp(Math.random() * (window.innerWidth - GHOST_W), margin, window.innerWidth - GHOST_W - margin);
+        targetY = clamp(Math.random() * (window.innerHeight - GHOST_H), margin, window.innerHeight - GHOST_H - margin);
+        isIdle = false;
+        char.classList.remove('idle');
+      }
+
+      function scheduleNext() {
+        isIdle = true;
+        char.classList.add('idle');
+        const delay = IDLE_MIN + Math.random() * (IDLE_MAX - IDLE_MIN);
+        idleTimer = setTimeout(pickTarget, delay);
+      }
+
+      function dropTrail() {
+        const dot = document.createElement('div');
+        dot.className = 'paw-trail';
+        dot.style.left = (x + GHOST_W / 2) + 'px';
+        dot.style.top = (y + GHOST_H * 0.85) + 'px';
+        document.body.appendChild(dot);
+        dot.addEventListener('animationend', () => dot.remove(), { once: true });
+      }
+
+      function tick(now) {
+        const dx = targetX - x;
+        const dy = targetY - y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist > 2) {
+          const step = Math.min(SPEED, dist);
+          x += (dx / dist) * step;
+          y += (dy / dist) * step;
+
+          if (dx < -1) char.classList.add('flipped');
+          else if (dx > 1) char.classList.remove('flipped');
+
+          const td = Math.hypot(x - lastTrailX, y - lastTrailY);
+          if (td >= TRAIL_DIST && now - lastTrailTime > TRAIL_INTERVAL) {
+            dropTrail();
+            lastTrailX = x;
+            lastTrailY = y;
+            lastTrailTime = now;
+          }
+        } else if (!isIdle) {
+          x = targetX;
+          y = targetY;
+          scheduleNext();
+        }
+
+        wrapper.style.transform = `translate(${x}px, ${y}px)`;
+        raf = requestAnimationFrame(tick);
+      }
+
+      wrapper.style.transform = `translate(${x}px, ${y}px)`;
+      scheduleNext();
+      raf = requestAnimationFrame(tick);
+
+      window.addEventListener('resize', () => {
+        x = clamp(x, 0, window.innerWidth - GHOST_W);
+        y = clamp(y, 0, window.innerHeight - GHOST_H);
+        targetX = clamp(targetX, 0, window.innerWidth - GHOST_W);
+        targetY = clamp(targetY, 0, window.innerHeight - GHOST_H);
+      });
+    })();
+  </script>
+
+</body>
+
+</html>

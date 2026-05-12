@@ -42,7 +42,9 @@
 /* ==========================================================================
    RESET & BASE STYLES
    ========================================================================== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -88,20 +90,28 @@ body::before {
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--surface-hover);
   border-radius: 5px;
   border: 2px solid var(--bg-primary);
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-moon);
 }
 
 /* Typography Utilities */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
   line-height: 1.2;
@@ -257,11 +267,13 @@ header.scrolled {
   border-radius: 2px;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
   color: var(--text-main);
 }
 
-.nav-link:hover::after, .nav-link.active::after {
+.nav-link:hover::after,
+.nav-link.active::after {
   width: 100%;
 }
 
@@ -439,7 +451,7 @@ header.scrolled {
   display: flex;
   align-items: center;
   gap: 1rem;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
   animation: float-slow 6s infinite alternate;
 }
 
@@ -474,7 +486,7 @@ header.scrolled {
   height: 420px;
   border-radius: 30px;
   overflow: hidden;
-  border: 2px solid rgba(255,255,255,0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: var(--shadow-premium);
   background: linear-gradient(135deg, var(--surface-color), var(--surface-hover));
   display: flex;
@@ -484,13 +496,25 @@ header.scrolled {
 }
 
 @keyframes pulse-glow {
-  0% { transform: scale(1); opacity: 0.3; }
-  100% { transform: scale(1.2); opacity: 0.5; }
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
 }
 
 @keyframes float-slow {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-15px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  100% {
+    transform: translateY(-15px);
+  }
 }
 
 /* ==========================================================================
@@ -540,9 +564,9 @@ header.scrolled {
 .stat-item {
   text-align: center;
   padding: 1.5rem;
-  background: rgba(255,255,255,0.02);
+  background: rgba(255, 255, 255, 0.02);
   border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .stat-number {
@@ -641,7 +665,7 @@ header.scrolled {
 
 .skill-bar {
   height: 6px;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -652,9 +676,17 @@ header.scrolled {
   transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.skill-category:nth-child(1) .skill-progress { background: linear-gradient(90deg, var(--accent-indigo), #818cf8); }
-.skill-category:nth-child(2) .skill-progress { background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue)); }
-.skill-category:nth-child(3) .skill-progress { background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange)); }
+.skill-category:nth-child(1) .skill-progress {
+  background: linear-gradient(90deg, var(--accent-indigo), #818cf8);
+}
+
+.skill-category:nth-child(2) .skill-progress {
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+}
+
+.skill-category:nth-child(3) .skill-progress {
+  background: linear-gradient(90deg, var(--accent-pink), var(--accent-orange));
+}
 
 /* Tags mapping */
 .tags-wrapper {
@@ -667,8 +699,8 @@ header.scrolled {
 
 .tech-tag {
   padding: 0.35rem 0.85rem;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   font-size: 0.8rem;
   color: var(--text-secondary);
@@ -705,7 +737,8 @@ header.scrolled {
   transition: var(--transition-smooth);
 }
 
-.filter-btn:hover, .filter-btn.active {
+.filter-btn:hover,
+.filter-btn.active {
   background: var(--accent-indigo);
   color: #fff;
   border-color: var(--accent-indigo);
@@ -838,7 +871,7 @@ header.scrolled {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding-top: 1.25rem;
   margin-top: auto;
 }
@@ -868,6 +901,10 @@ header.scrolled {
 /* ==========================================================================
    "FUNNY ME" / OTAKU & FUN SIDE SECTION
    ========================================================================== */
+#funny-me {
+  display: none;
+}
+
 .funny-section {
   background: radial-gradient(circle at center, rgba(255, 8, 68, 0.05) 0%, transparent 70%);
   border-top: 1px solid rgba(255, 8, 68, 0.1);
@@ -924,7 +961,7 @@ header.scrolled {
   overflow: hidden;
   aspect-ratio: 3/4;
   background: var(--bg-secondary);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   cursor: pointer;
 }
 
@@ -968,7 +1005,7 @@ header.scrolled {
 }
 
 .talk-bubble {
-  background: rgba(255,255,255,0.02);
+  background: rgba(255, 255, 255, 0.02);
   border-left: 3px solid var(--accent-pink);
   padding: 1.25rem;
   border-radius: 0 16px 16px 0;
@@ -1015,7 +1052,7 @@ header.scrolled {
   align-items: flex-start;
   gap: 1.25rem;
   padding: 1.5rem;
-  background: rgba(255,255,255,0.02);
+  background: rgba(255, 255, 255, 0.02);
   border-radius: 16px;
   border: 1px solid var(--border-color);
   transition: var(--transition-smooth);
@@ -1054,7 +1091,8 @@ header.scrolled {
   margin-bottom: 0.2rem;
 }
 
-.contact-detail p, .contact-detail a {
+.contact-detail p,
+.contact-detail a {
   color: var(--text-secondary);
   font-size: 0.95rem;
 }
@@ -1157,7 +1195,8 @@ textarea.form-control {
    ========================================================================== */
 footer {
   border-top: 1px solid var(--border-color);
-  padding: 4rem 0 8rem 0; /* extra padding at base for pet animation */
+  padding: 4rem 0 8rem 0;
+  /* extra padding at base for pet animation */
   background: var(--bg-secondary);
   text-align: center;
   color: var(--text-secondary);
@@ -1184,163 +1223,114 @@ footer {
 }
 
 /* ==========================================================================
-   ANIMATED WALKING FIRE MONKEY PET (INFERNAPE STYLE)
+   GHOST PET — FREE-ROAMING 2D PAGE COMPANION
    ========================================================================== */
+
 .pet-wrapper {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
-  width: 100%;
-  height: 65px;
+  width: 80px;
+  height: 96px;
   pointer-events: none;
   z-index: 9999;
-  background: linear-gradient(to top, rgba(8, 12, 22, 0.96) 0%, rgba(8, 12, 22, 0.55) 60%, transparent 100%);
-  border-top: 1px solid rgba(255, 120, 0, 0.25);
-  display: flex;
-  align-items: flex-end;
+  will-change: transform;
+  transform: translate(0px, 0px);
 }
 
 .pet-character {
-  position: absolute;
-  bottom: 5px;
-  left: -80px;
-  width: 60px;
-  height: 58px;
-  animation: walk-across 20s linear infinite;
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 0 10px rgba(255, 120, 0, 0.75));
+  filter: drop-shadow(0 0 14px rgba(160, 120, 255, 0.7)) drop-shadow(0 0 4px rgba(200, 180, 255, 0.3));
+  transition: transform 0.25s ease;
+}
+
+/* JS adds .flipped when moving left */
+.pet-character.flipped {
+  transform: scaleX(-1);
 }
 
 .pet-body {
-  animation: bounce-pet 0.35s ease-in-out infinite alternate;
+  width: 100%;
+  height: 100%;
+  animation: ghostBob 0.52s ease-in-out infinite alternate;
   transform-origin: bottom center;
 }
 
-/* Keyframes for full responsive traversal */
-@keyframes walk-across {
+/* Active bob while moving */
+@keyframes ghostBob {
   0% {
-    left: -80px;
-    transform: scaleX(1);
+    transform: translateY(0) rotate(-2deg);
   }
-  48% {
-    left: calc(100% + 10px);
-    transform: scaleX(1);
+
+  100% {
+    transform: translateY(-7px) rotate(2deg);
   }
+}
+
+/* Slower dreamy float when idle */
+.pet-character.idle .pet-body {
+  animation: ghostIdle 2.6s ease-in-out infinite;
+}
+
+@keyframes ghostIdle {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+
+  40% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+
+  70% {
+    transform: translateY(-5px) rotate(-0.4deg);
+  }
+}
+
+/* Glow breathes while idle */
+.pet-character.idle {
+  animation: glowPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 16px rgba(160, 120, 255, 0.6)) drop-shadow(0 0 5px rgba(200, 180, 255, 0.3));
+  }
+
   50% {
-    left: calc(100% + 10px);
-    transform: scaleX(-1); /* flip horizontally to walk back */
-  }
-  98% {
-    left: -80px;
-    transform: scaleX(-1);
-  }
-  100% {
-    left: -80px;
-    transform: scaleX(1);
+    filter: drop-shadow(0 0 34px rgba(200, 160, 255, 1)) drop-shadow(0 0 12px rgba(230, 210, 255, 0.55));
   }
 }
 
-@keyframes bounce-pet {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-5px) rotate(3deg);
-  }
-}
-
-/* Paw Print Trails — fire orange */
+/* ── Ghost trail dots left behind while moving ── */
 .paw-trail {
-  position: absolute;
-  bottom: 8px;
+  position: fixed;
   width: 10px;
-  height: 6px;
-  background: rgba(255, 110, 0, 0.4);
+  height: 10px;
   border-radius: 50%;
-  opacity: 0;
-  animation: fade-paw 2s linear forwards;
+  background: rgba(160, 120, 255, 0.55);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  animation: trailFade 1.1s ease-out forwards;
 }
 
-@keyframes fade-paw {
-  0% { opacity: 0.8; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.5); }
-}
+@keyframes trailFade {
+  0% {
+    opacity: 0.75;
+    transform: translate(-50%, -50%) scale(1);
+  }
 
-/* ==========================================================================
-   RESPONSIVE DESIGN ADAPTATIONS
-   ========================================================================== */
-@media (max-width: 1024px) {
-  .hero-grid, .about-grid, .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  
-  .hero-visual {
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  
-  .skills-container, .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .funny-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .hero-title {
-    font-size: 3.25rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-links {
-    position: fixed;
-    top: var(--header-height);
-    left: 0;
-    width: 100%;
-    background: var(--bg-primary);
-    padding: 2rem;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    border-bottom: 1px solid var(--border-color);
-    transform: translateY(-150%);
-    transition: var(--transition-smooth);
-    z-index: 999;
-  }
-  
-  .nav-links.open {
-    transform: translateY(0);
-  }
-  
-  .menu-toggle {
-    display: block;
-  }
-  
-  .skills-container, .projects-grid, .stats-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .form-group.full-width {
-    grid-column: span 1;
-  }
-  
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .section-title {
-    font-size: 2.2rem;
-  }
-  
-  .about-card, .contact-form-panel, .otaku-card {
-    padding: 1.5rem;
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.4);
   }
 }

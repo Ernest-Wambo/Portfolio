@@ -141,26 +141,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Dynamic Animation Trails for Walking Pet
-  const petCharacter = document.getElementById('animated-bottom-pet');
-  const petWrapper = document.querySelector('.pet-wrapper');
-  
-  if (petCharacter && petWrapper) {
-    // Optionally spawn ambient paw trails periodically
-    setInterval(() => {
-      // Get current character computed position relative to base
-      const rect = petCharacter.getBoundingClientRect();
-      if (rect.left > 0 && rect.left < window.innerWidth) {
-        const paw = document.createElement('div');
-        paw.className = 'paw-trail';
-        // Place trail exactly behind pet movement direction
-        paw.style.left = `${rect.left + 25}px`;
-        paw.style.bottom = '8px';
-        petWrapper.appendChild(paw);
-        
-        // Purge trail element post keyframe completion
-        setTimeout(() => paw.remove(), 2000);
+  // 6. Secret Otaku Section — reveal only when navigated via #funny-me
+  const funnySection = document.getElementById('funny-me');
+  if (funnySection) {
+    const revealIfSecret = () => {
+      if (window.location.hash === '#funny-me') {
+        funnySection.style.display = 'block';
+        setTimeout(() => funnySection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
       }
-    }, 1200);
+    };
+    revealIfSecret();
+    window.addEventListener('hashchange', revealIfSecret);
   }
 });

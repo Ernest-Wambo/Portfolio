@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ernest Wambo | Software Engineer & Algorithm Designer</title>
+  <meta name="description" content="Portfolio of Ernest Wambo - Software Engineer, Algorithm Designer, and Machine Learning enthusiast based at Université de Lorraine, France.">
+  
+  <!-- Favicon / FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Style System -->
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <header id="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="logo">
+        Er<span class="logo-dot">_</span>Wx
+      </a>
+      
+      <button class="menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="nav-links" id="nav-menu">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#funny-me" class="nav-link">Funny Me</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#cv" class="btn btn-primary" id="download-cv-btn">
+          <i class="fa-solid fa-file-arrow-down"></i> Resume
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-subtitle">
+          <i class="fa-solid fa-code"></i> Full-Stack & Low-Level Optimization
+        </div>
+        <h1 class="hero-title">
+          Hi, I'm <span class="gradient-text">Ernest Wambo</span>
+        </h1>
+        <div class="hero-quote">
+          "This journey of a thousand days, once started with a single day."
+        </div>
+        <p class="hero-desc">
+          A passionate Software Engineer & Computer Science student at <strong>Université de Lorraine</strong>. Crafting robust multi-language backends, designing highly optimized computational geometry algorithms, and engineering premium user interfaces.
+        </p>
+        
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">
+            View Projects <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            Get in Touch <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+
+        <div class="hero-socials">
+          <a href="https://github.com/Ernest-Wambo" target="_blank" class="social-icon" aria-label="GitHub Profile">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/ernest-wx" target="_blank" class="social-icon" aria-label="LinkedIn Profile">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://gitlab.univ-lorraine.fr/e4479u" target="_blank" class="social-icon" aria-label="GitLab Profile">
+            <i class="fa-brands fa-gitlab"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Custom Graphic Panel -->
+      <div class="hero-visual">
+        <div class="glow-circle"></div>
+        
+        <div class="hero-image-wrapper">
+          <!-- Internal Vector Graphic Representation -->
+          <svg viewBox="0 0 400 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="polyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#6366f1" stop-opacity="0.2"/>
+              </linearGradient>
+              <linearGradient id="polyGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ff0844" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#ffb199" stop-opacity="0.1"/>
+              </linearGradient>
+            </defs>
+            <!-- Abstract futuristic geometric web network -->
+            <circle cx="200" cy="200" r="140" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2" stroke-dasharray="10 10"/>
+            <circle cx="200" cy="200" r="90" fill="none" stroke="rgba(0,242,254,0.15)" stroke-width="1"/>
+            <path d="M200,50 L330,125 L330,275 L200,350 L70,275 L70,125 Z" fill="url(#polyGrad)" stroke="#00f2fe" stroke-width="2"/>
+            <polygon points="200,100 286,150 286,250 200,300 114,250 114,150" fill="url(#polyGrad2)"/>
+            <circle cx="200" cy="200" r="30" fill="#6366f1"/>
+            <circle cx="200" cy="50" r="6" fill="#fff"/>
+            <circle cx="330" cy="125" r="6" fill="#00f2fe"/>
+            <circle cx="330" cy="275" r="6" fill="#ff0844"/>
+            <circle cx="200" cy="350" r="6" fill="#fff"/>
+            <circle cx="70" cy="275" r="6" fill="#00f2fe"/>
+            <circle cx="70" cy="125" r="6" fill="#6366f1"/>
+            <!-- Center Code Symbol -->
+            <text x="200" y="208" fill="#fff" font-family="'Outfit', sans-serif" font-weight="bold" font-size="22" text-anchor="middle">&lt;/&gt;</text>
+          </svg>
+        </div>
+
+        <!-- Floating Skill Badges -->
+        <div class="code-badge">
+          <i class="fa-solid fa-layer-group badge-icon"></i>
+          <div class="badge-text">
+            <h4>.NET / Blazor</h4>
+            <p>Enterprise Apps</p>
+          </div>
+        </div>
+
+        <div class="code-badge">
+          <i class="fa-solid fa-chart-line badge-icon" style="color: var(--accent-pink);"></i>
+          <div class="badge-text">
+            <h4>Machine Learning</h4>
+            <p>Linear Regressions</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Background & <span class="gradient-text-indigo">Philosophy</span></h2>
+        <p class="section-subtitle">Bridging the gap between pure computer science theory and mission-critical production architecture.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-visual glass-panel" style="aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 2rem;">
+          <svg viewBox="0 0 200 200" width="80%" height="80%" xmlns="http://www.w3.org/2000/svg">
+            <path fill="var(--accent-indigo)" opacity="0.2" d="M42.7,-64.1C55.9,-54.8,67.6,-43.3,73.4,-29.4C79.1,-15.6,78.9,0.7,73.3,14.6C67.7,28.5,56.7,40.1,44.5,49.8C32.4,59.5,16.2,67.3,0.3,66.8C-15.6,66.3,-31.2,57.5,-44.6,47.8C-58,38.1,-69.3,27.5,-73.5,14.4C-77.7,1.3,-74.8,-14.2,-68.2,-27.6C-61.6,-40.9,-51.2,-52.1,-38.7,-61.6C-26.2,-71,-13.1,-78.7,1.1,-80.3C15.3,-81.8,30.5,-73.4,42.7,-64.1Z" transform="translate(100 100)" />
+            <text x="100" y="105" font-family="'Outfit', sans-serif" font-weight="800" font-size="14" fill="var(--accent-cyan)" text-anchor="middle">Université de Lorraine</text>
+            <text x="100" y="125" font-family="'Inter', sans-serif" font-size="10" fill="var(--text-secondary)" text-anchor="middle">Software Engineering</text>
+            <circle cx="100" cy="65" r="18" fill="none" stroke="var(--accent-cyan)" stroke-width="2"/>
+            <path d="M95,65 L100,55 L105,65 L100,75 Z" fill="#fff"/>
+          </svg>
+        </div>
+
+        <div class="about-card glass-panel">
+          <div class="about-text">
+            <h3>Architecting Scalable Code</h3>
+            <p>
+              I specialize in software architecture and algorithms. During my ongoing studies at <strong>Université de Lorraine</strong>, I have developed a keen intuition for writing highly decoupled, strategy-driven codebases that can scale elegantly.
+            </p>
+            <p>
+              Whether it involves parsing unstructured multi-language contracts utilizing high-performance parallel async threads in <strong>.NET Blazor</strong>, or performing deep complexity audits on 2D Sweep-Line algorithms using pure <strong>C</strong>, I love diving deep into implementation complexities where detail and exactness matter most.
+            </p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">9+</div>
+              <div class="stat-label">GitHub Repos</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">5+</div>
+              <div class="stat-label">Core Languages</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Commitment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="skills">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Technical <span class="gradient-text">Competencies</span></h2>
+        <p class="section-subtitle">A balanced fusion of highly typed systems, object-oriented principles, and algorithmic agility.</p>
+      </div>
+
+      <div class="skills-container">
+        <!-- Category 1: Languages -->
+        <div class="skill-category glass-panel">
+          <div class="skill-category-header">
+            <div class="skill-icon">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <h3>Core Languages</h3>
+          </div>
+          
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-info"><span>C#</span><span class="skill-level">Advanced</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>C / C++</span><span class="skill-level">Proficient</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Java</span><span class="skill-level">Proficient</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Python</span><span class="skill-level">Intermediate</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>PHP & JS</span><span class="skill-level">Intermediate</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 78%;"></div></div>
+            </div>
+          </div>
+
+          <div class="tags-wrapper">
+            <span class="tech-tag">Object-Oriented</span>
+            <span class="tech-tag">Memory Pointers</span>
+            <span class="tech-tag">Strong Typing</span>
+          </div>
+        </div>
+
+        <!-- Category 2: Frameworks & Enterprise Tech -->
+        <div class="skill-category glass-panel">
+          <div class="skill-category-header">
+            <div class="skill-icon">
+              <i class="fa-solid fa-server"></i>
+            </div>
+            <h3>Frameworks & Architecture</h3>
+          </div>
+          
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-info"><span>.NET 8 / Blazor Server</span><span class="skill-level">Advanced</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Database Design (SQL)</span><span class="skill-level">Advanced</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Strategy Pattern Router</span><span class="skill-level">Master</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 96%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Parallel Processing (Tasks)</span><span class="skill-level">Advanced</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>EPPlus / Excel APIs</span><span class="skill-level">Proficient</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+            </div>
+          </div>
+
+          <div class="tags-wrapper">
+            <span class="tech-tag">ODBC Lookups</span>
+            <span class="tech-tag">Client-Server</span>
+            <span class="tech-tag">WebAssembly</span>
+          </div>
+        </div>
+
+        <!-- Category 3: Algorithmic Geometry & ML -->
+        <div class="skill-category glass-panel">
+          <div class="skill-category-header">
+            <div class="skill-icon">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <h3>Algorithms & Data Science</h3>
+          </div>
+          
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-info"><span>Computational Geometry</span><span class="skill-level">Advanced</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Sweep-Line (Bentley-Ottman)</span><span class="skill-level">Advanced</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 92%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Graph Theory (BST/DLL)</span><span class="skill-level">Proficient</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 86%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Linear Regressions (ML)</span><span class="skill-level">Intermediate</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 82%;"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Procedural Gen (BMP)</span><span class="skill-level">Proficient</span></div>
+              <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+            </div>
+          </div>
+
+          <div class="tags-wrapper">
+            <span class="tech-tag">Big-O Optimization</span>
+            <span class="tech-tag">Jupyter</span>
+            <span class="tech-tag">Mathematical Logic</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PROJECTS -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Featured Core <span class="gradient-text-indigo">Repositories</span></h2>
+        <p class="section-subtitle">A deep dive into complex modular parsing, computational efficiency, and multiplayer concurrency.</p>
+      </div>
+
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">All Repositories</button>
+        <button class="filter-btn" data-filter="web">Web & Enterprise</button>
+        <button class="filter-btn" data-filter="algorithms">Algorithms & Low-Level</button>
+        <button class="filter-btn" data-filter="data">Machine Learning</button>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card glass-panel" data-category="web">
+          <div class="project-img-wrapper">
+            <!-- Reference generated placeholder image -->
+            <img src="./assets/project_blazor.png" alt="Enterprise Contract Parsing Engine" class="project-img" id="img-proj-1" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80'">
+            <div class="project-overlay">
+              <a href="https://github.com/Ernest-Wambo" target="_blank" class="project-link-btn" title="View Source Code">
+                <i class="fa-solid fa-code"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-tag">.NET Blazor Server</span>
+            <h3 class="project-title"><a href="https://github.com/Ernest-Wambo" target="_blank">Enterprise Contract Parsing Engine</a></h3>
+            <p class="project-desc">
+              Highly modular data enrichment and parsing tool utilizing the <strong>Strategy Pattern</strong> to detect and extract multi-language contract fields (e.g., concatenated BMW layouts). Integrated parallel asynchronous ODBC/SQL lookups via <code>Task.WhenAll</code> to enrich payload structures, automatically streaming cleanly structured reports via EPPlus Excel formatting APIs.
+            </p>
+            <div class="project-footer">
+              <div class="project-techs">
+                <span>C#</span> • <span>Blazor</span> • <span>SQL Server</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Ernest-Wambo" target="_blank"><i class="fa-brands fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card glass-panel" data-category="algorithms">
+          <div class="project-img-wrapper">
+            <img src="./assets/project_sweep.png" alt="Sweep-Line Algorithm Complexity Analysis" class="project-img" id="img-proj-2" onerror="this.src='https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=600&q=80'">
+            <div class="project-overlay">
+              <a href="https://github.com/Ernest-Wambo/Bentley-Ottman-swipe-line-algorithm-on-2D-plane" target="_blank" class="project-link-btn" title="View Source Code">
+                <i class="fa-solid fa-code"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Computational Geometry</span>
+            <h3 class="project-title"><a href="https://github.com/Ernest-Wambo/Bentley-Ottman-swipe-line-algorithm-on-2D-plane" target="_blank">2D Bentley-Ottman Sweep-Line</a></h3>
+            <p class="project-desc">
+              Rigorous study and custom low-level development of the classic sweep-line algorithm in pure <strong>C</strong> to discover line segment intersections in a 2D plane. Leveraged advanced graph theory models, utilizing a robust <strong>Binary Search Tree (BST)</strong> for dynamic status tracing alongside a customized <strong>Doubly Linked List</strong> to manage priority event scheduling efficiently.
+            </p>
+            <div class="project-footer">
+              <div class="project-techs">
+                <span>C</span> • <span>Pointers</span> • <span>Graph Theory</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Ernest-Wambo/Bentley-Ottman-swipe-line-algorithm-on-2D-plane" target="_blank"><i class="fa-brands fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card glass-panel" data-category="web">
+          <div class="project-img-wrapper">
+            <img src="./assets/project_uno.png" alt="Multiplayer Uno Client-Server Application" class="project-img" id="img-proj-3" onerror="this.src='https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80'">
+            <div class="project-overlay">
+              <a href="https://github.com/Ernest-Wambo/Uno-client-serveur-BDD" target="_blank" class="project-link-btn" title="View Source Code">
+                <i class="fa-solid fa-code"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Client-Server System</span>
+            <h3 class="project-title"><a href="https://github.com/Ernest-Wambo/Uno-client-serveur-BDD" target="_blank">Multiplayer Network Uno Game</a></h3>
+            <p class="project-desc">
+              Conception and realization of a multiplayer Uno card game featuring native graphical desktop client interactions communicating synchronously with a centralized Java socket server. Integrated full backend state tracking tied persistently to a robust relational database layer ensuring uninterrupted game sessions and secure multithreading.
+            </p>
+            <div class="project-footer">
+              <div class="project-techs">
+                <span>Java</span> • <span>Sockets</span> • <span>SQL DB</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Ernest-Wambo/Uno-client-serveur-BDD" target="_blank"><i class="fa-brands fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card glass-panel" data-category="data">
+          <div class="project-img-wrapper">
+            <img src="./assets/project_co2.png" alt="Commercial Vehicle CO2 Emissions Predictor" class="project-img" id="img-proj-4" onerror="this.src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80'">
+            <div class="project-overlay">
+              <a href="https://github.com/Ernest-Wambo/Prediction-of-CO2-emissions-Linear-Regression" target="_blank" class="project-link-btn" title="View Source Code">
+                <i class="fa-solid fa-code"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Machine Learning</span>
+            <h3 class="project-title"><a href="https://github.com/Ernest-Wambo/Prediction-of-CO2-emissions-Linear-Regression" target="_blank">CO2 Emission ML Predictor</a></h3>
+            <p class="project-desc">
+              Supervised data science study building optimized Multiple Linear Regression pipelines inside <strong>Jupyter Notebooks</strong> to forecast precise vehicular emissions. Analyzed distinct commercial configuration inputs across France to map critical dependencies, optimizing target parameters for maximum predictive coefficient convergence.
+            </p>
+            <div class="project-footer">
+              <div class="project-techs">
+                <span>Python</span> • <span>Jupyter</span> • <span>Scikit-Learn</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Ernest-Wambo/Prediction-of-CO2-emissions-Linear-Regression" target="_blank"><i class="fa-brands fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card glass-panel" data-category="algorithms">
+          <div class="project-img-wrapper">
+            <img src="./assets/project_solar.png" alt="Algorithmic Solar System Image Generator" class="project-img" id="img-proj-5" onerror="this.src='https://images.unsplash.com/photo-1614732414444-096e5f1122d5?auto=format&fit=crop&w=600&q=80'">
+            <div class="project-overlay">
+              <a href="https://github.com/Ernest-Wambo/Algorithme-Geometrie-Generation-d-image-" target="_blank" class="project-link-btn" title="View Source Code">
+                <i class="fa-solid fa-code"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Algorithmic Art</span>
+            <h3 class="project-title"><a href="https://github.com/Ernest-Wambo/Algorithme-Geometrie-Generation-d-image-" target="_blank">Solar System BMP Art Generator</a></h3>
+            <p class="project-desc">
+              Low-level graphical generation application built using <strong>C++</strong> leveraging algorithmic computational geometry formulas to procedurally map, scale, and render highly precise visualizations of celestial orbits directly into raw bit-level uncompressed BMP image file buffers from basic primitive structures.
+            </p>
+            <div class="project-footer">
+              <div class="project-techs">
+                <span>C++</span> • <span>Geometry Formulas</span> • <span>BMP API</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Ernest-Wambo/Algorithme-Geometrie-Generation-d-image-" target="_blank"><i class="fa-brands fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card glass-panel" data-category="web">
+          <div class="project-img-wrapper">
+            <img src="./assets/project_cocktail.png" alt="Cocktail Inventory & Favorite Management Web App" class="project-img" id="img-proj-6" onerror="this.src='https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80'">
+            <div class="project-overlay">
+              <a href="https://github.com/Ernest-Wambo/projetCocktailWeb" target="_blank" class="project-link-btn" title="View Source Code">
+                <i class="fa-solid fa-code"></i>
+              </a>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-tag">Full-Stack Web</span>
+            <h3 class="project-title"><a href="https://github.com/Ernest-Wambo/projetCocktailWeb" target="_blank">Restaurant Inventory Platform</a></h3>
+            <p class="project-desc">
+              Web platform engineered in pure <strong>PHP</strong> and HTML/CSS implementing stateful backend workflows to curate specialized restaurant beverage inventories. Includes complete access session logic alongside secure user preference persistence tables handled without relying on client-side script execution.
+            </p>
+            <div class="project-footer">
+              <div class="project-techs">
+                <span>PHP</span> • <span>HTML5</span> • <span>Session Engine</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/Ernest-Wambo/projetCocktailWeb" target="_blank"><i class="fa-brands fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- "FUNNY ME" / OTAKU & FUN SIDE SECTION -->
+  <section id="funny-me" class="funny-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Funny Me & <span class="gradient-text-pink">Otaku Side</span></h2>
+        <p class="section-subtitle">Because great software engineers run on high caffeine, intense focus, and timeless anime storylines.</p>
+      </div>
+
+      <div class="funny-grid">
+        <!-- Anime Appreciation Card -->
+        <div class="otaku-card glass-panel">
+          <div class="otaku-header">
+            <h3>Anime Masterpieces</h3>
+            <span class="otaku-badge">Certified Otaku</span>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">
+            When I step away from code optimization and pointer debugging, these legendary series fuel my passion and imagination:
+          </p>
+          
+          <div class="anime-grid">
+            <div class="anime-item" title="Attack on Titan">
+              <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=300&q=80" alt="Attack on Titan vibe">
+              <div class="anime-caption">AOT / Shingeki</div>
+            </div>
+            <div class="anime-item" title="One Piece">
+              <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=300&q=80" alt="One Piece vibe">
+              <div class="anime-caption">One Piece</div>
+            </div>
+            <div class="anime-item" title="Steins;Gate">
+              <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=300&q=80" alt="Sci-Fi vibe">
+              <div class="anime-caption">Steins;Gate</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 1rem;">
+            <div style="font-size: 2rem; color: var(--accent-pink);">✨</div>
+            <div>
+              <h4 style="font-size: 0.95rem; margin-bottom: 0.1rem;">Beloved Companion</h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted);">Look at the bottom of your screen! My charming anime pet (Evoli vibe) is keeping our session absolutely bug-free.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fun Small Talks Card -->
+        <div class="otaku-card glass-panel" style="justify-content: space-between;">
+          <div class="otaku-header">
+            <h3>Small Talk & Trivia</h3>
+            <span class="otaku-badge" style="background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));">Dev Musings</span>
+          </div>
+          
+          <div class="small-talk-box">
+            <div class="talk-bubble">
+              <h5><i class="fa-solid fa-terminal" style="color: var(--accent-cyan);"></i> Tabs vs. Spaces?</h5>
+              <p>Tabs for universal accessibility scaling, but ultimately I let my C# / C auto-formatters arbitrate the ultimate truth!</p>
+            </div>
+
+            <div class="talk-bubble">
+              <h5><i class="fa-solid fa-mug-hot" style="color: var(--accent-pink);"></i> Debugging Rituals</h5>
+              <p>Staring intensely at parallel thread execution logs while listening to legendary anime battle OSTs to find that one rogue thread lock.</p>
+            </div>
+
+            <div class="talk-bubble">
+              <h5><i class="fa-solid fa-compass" style="color: var(--accent-orange);"></i> Ultimate Engineering Goal</h5>
+              <p>Crafting deeply elegant software layers that bring true clarity to dense computational chaos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Let's <span class="gradient-text">Collaborate</span></h2>
+        <p class="section-subtitle">Interested in scalable code, machine learning logic, or otaku tech musings? Drop me a line directly below.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info-wrapper">
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-detail">
+              <h4>Academic Base</h4>
+              <p>Université de Lorraine, France</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-detail">
+              <h4>Direct Email</h4>
+              <p><a href="mailto:ernest.wambo@univ-lorraine.fr">Contact via Email Interface</a></p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+            <div class="contact-detail">
+              <h4>Professional Network</h4>
+              <p><a href="https://www.linkedin.com/in/ernest-wx" target="_blank">linkedin.com/in/ernest-wx</a></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Email Dispatch Form -->
+        <div class="contact-form-panel glass-panel">
+          <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem;">Send a Message</h3>
+          
+          <!-- Integrated Formspree / Web3Forms Form Action -->
+          <!-- Replace 'YOUR_FORM_ID' with your unique Formspree code to receive emails directly! -->
+          <form id="contact-form" action="https://formspree.io/f/xbjnoprw" method="POST">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name" class="form-label">Your Name</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="e.g., Jane Doe" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="e.g., jane@company.com" required>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="subject" class="form-label">Inquiry Subject</label>
+                <input type="text" id="subject" name="subject" class="form-control" placeholder="e.g., Software Engineering Opportunity" required>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="message" class="form-label">Message Payload</label>
+                <textarea id="message" name="message" class="form-control" placeholder="Write your project parameters or small talk right here..." required></textarea>
+              </div>
+            </div>
+
+            <div class="submit-btn-wrapper">
+              <button type="submit" class="btn btn-primary">
+                Dispatch Payload <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+
+            <div id="form-alert" class="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-logo">Er_Wx</div>
+      <p class="copyright">
+        Designed & Engineered with premium web components by <strong>Ernest Wambo</strong>. © 2026 All rights reserved.
+      </p>
+    </div>
+
+    <!-- ADORABLE WALKING BOTTOM PET (EVOLI / CHIBI VIBE) -->
+    <div class="pet-wrapper">
+      <div class="pet-character" id="animated-bottom-pet">
+        <!-- Gorgeous embedded SVG Vector art of a happy fluffy walking pet -->
+        <svg class="pet-body" viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <!-- Fluffy dynamic tail -->
+          <path d="M25,65 C10,60 5,40 12,35 C20,30 25,45 28,55 Z" fill="#b87333">
+            <animate attributeName="d" 
+              values="M25,65 C10,60 5,40 12,35 C20,30 25,45 28,55 Z; M25,65 C12,50 8,30 18,25 C25,20 30,40 28,55 Z; M25,65 C10,60 5,40 12,35 C20,30 25,45 28,55 Z" 
+              dur="1s" repeatCount="indefinite"/>
+          </path>
+          <path d="M12,35 C15,32 18,34 20,38 Z" fill="#ffe5b4"/>
+
+          <!-- Pet Body -->
+          <ellipse cx="45" cy="65" rx="20" ry="14" fill="#cd853f"/>
+          <!-- Cream fluffy neck mane -->
+          <path d="M40,55 Q55,45 70,55 Q60,70 40,55 Z" fill="#ffe5b4"/>
+
+          <!-- Cute Back and Front Paws -->
+          <circle cx="32" cy="77" r="4" fill="#8b4513"/>
+          <circle cx="42" cy="78" r="4" fill="#a0522d"/>
+          <circle cx="55" cy="78" r="4" fill="#a0522d"/>
+          <circle cx="63" cy="77" r="4" fill="#8b4513"/>
+
+          <!-- Big Cute Eevee Ears -->
+          <path d="M52,42 L40,15 Q48,12 58,35 Z" fill="#cd853f"/>
+          <path d="M43,18 Q47,15 54,32 Z" fill="#5c2e16"/>
+
+          <path d="M68,42 L82,18 Q74,12 62,35 Z" fill="#cd853f"/>
+          <path d="M78,22 Q72,16 64,32 Z" fill="#5c2e16"/>
+
+          <!-- Adorable Head -->
+          <circle cx="60" cy="46" r="15" fill="#cd853f"/>
+
+          <!-- Joyful Otaku Eyes -->
+          <path d="M54,43 Q57,40 60,43" fill="none" stroke="#2b1d0c" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M66,43 Q69,40 72,43" fill="none" stroke="#2b1d0c" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Cheerful blush -->
+          <ellipse cx="53" cy="48" rx="2.5" ry="1.5" fill="#ff69b4" opacity="0.7"/>
+          <ellipse cx="71" cy="48" rx="2.5" ry="1.5" fill="#ff69b4" opacity="0.7"/>
+
+          <!-- Cute tiny smiling nose/mouth -->
+          <circle cx="63" cy="47" r="1.2" fill="#2b1d0c"/>
+          <path d="M60,50 Q63,53 66,50" fill="none" stroke="#2b1d0c" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        
+        <!-- Animated paw trail spots spawned via CSS logic -->
+        <div class="paw-trail" style="left: 10px;"></div>
+        <div class="paw-trail" style="left: 30px; animation-delay: 0.5s;"></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Interactive Client Logic -->
+  <script src="./script.js"></script>
+</body>
+</html>

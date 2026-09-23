@@ -1,0 +1,17 @@
+{
+  "name": "er-wx-portfolio",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Ernest Wambo's portfolio + the hidden Otaku Zone (modular vanilla-JS runtime, no build step).",
+  "scripts": {
+    "test": "node --test \"otaku/tests/unit/*.test.js\"",
+    "test:e2e": "node otaku/tests/e2e/otaku.e2e.js",
+    "test:all": "npm test && npm run test:e2e"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^23.11.1"
+  },
+  "engines": {
+    "node": ">=21"
+  }
+}

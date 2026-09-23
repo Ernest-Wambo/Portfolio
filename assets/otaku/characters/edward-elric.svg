@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <radialGradient id="ebg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="60%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <filter id="glow-e" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="20" fill="url(#ebg)" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.4"/>
+  <!-- Alchemical Circle & Flamel Symbol -->
+  <g transform="translate(100, 92)" filter="url(#glow-e)">
+    <!-- Outer Transmutation Circle -->
+    <circle cx="0" cy="0" r="42" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.6"/>
+    <circle cx="0" cy="0" r="36" fill="none" stroke="#60a5fa" stroke-width="1" stroke-dasharray="6,3"/>
+    <!-- Hexagram / Alchemical Triangles -->
+    <polygon points="0,-36 31.18,18 -31.18,18" fill="none" stroke="#0ea5e9" stroke-width="1" stroke-opacity="0.5"/>
+    <polygon points="0,36 31.18,-18 -31.18,-18" fill="none" stroke="#0ea5e9" stroke-width="1" stroke-opacity="0.5"/>
+    <!-- Flamel Cross -->
+    <line x1="0" y1="-28" x2="0" y2="28" stroke="#f1f5f9" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-18" y1="-12" x2="18" y2="-12" stroke="#f1f5f9" stroke-width="3" stroke-linecap="round"/>
+    <!-- Crown on top of cross -->
+    <path d="M-6 -28 L-8 -34 L-2 -31 L0 -35 L2 -31 L8 -34 L6 -28 Z" fill="#fbbf24"/>
+    <!-- Serpent wrapping cross -->
+    <path d="M-10 -8 Q0 -15 10 -8 Q0 0 -10 8 Q0 15 10 12" fill="none" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Angel Wings -->
+    <path d="M-18 -12 Q-32 -20 -36 -6 Q-28 -4 -18 -10" fill="#38bdf8" opacity="0.8"/>
+    <path d="M18 -12 Q32 -20 36 -6 Q28 -4 18 -10" fill="#38bdf8" opacity="0.8"/>
+  </g>
+  <text x="100" y="165" text-anchor="middle" fill="#38bdf8" font-family="'Space Grotesk', system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="2">EDWARD ELRIC</text>
+  <text x="100" y="180" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="9" letter-spacing="1">FULLMETAL ALCHEMIST</text>
+</svg>

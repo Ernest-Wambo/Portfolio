@@ -1,0 +1,371 @@
+/* ==========================================================================
+   OTAKU ZONE — BASE LAYER
+   Tokens, reset, typography and shared primitives owned by the Otaku zone.
+   Deliberately decoupled from ../../index.css so the personal portfolio can
+   be modernized without ever touching this universe (and vice versa).
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+:root {
+  /* Surfaces */
+  --bg-primary: #080c16;
+  --bg-secondary: #0d1422;
+  --surface-color: rgba(15, 22, 40, 0.72);
+  --surface-hover: rgba(22, 32, 56, 0.88);
+
+  /* Accents */
+  --accent-cyan: #00f2fe;
+  --accent-blue: #4facfe;
+  --accent-indigo: #6366f1;
+  --accent-pink: #ff0844;
+  --accent-orange: #ffb199;
+  --accent-moon: #a8c5da;
+  --accent-silver: #c0ccd8;
+  --accent-star: #e8f2fb;
+
+  /* Otaku-specific accents */
+  --saiyan-gold: #fbbf24;
+  --sharingan-red: #ef4444;
+  --chakra-violet: #a855f7;
+  --scouter-green: #4ade80;
+
+  /* Card chrome (faction skins override these) */
+  --card-border: rgba(255, 8, 68, 0.15);
+  --card-border-hover: var(--accent-pink);
+  --card-glow: rgba(255, 8, 68, 0.15);
+  --page-pattern: none;
+
+  /* Text */
+  --text-main: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  /* Borders & shadows */
+  --border-color: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(168, 197, 218, 0.3);
+  --shadow-premium: 0 20px 40px -15px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 0 28px rgba(168, 197, 218, 0.18);
+
+  /* Type */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  /* Motion & layering */
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --z-dock: 200;
+  --z-hud: 9000;
+  --z-pet: 9999;
+  --z-overlay: 10000;
+  --z-toast: 10001;
+}
+
+/* ── Reset ─────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 78% 6%, rgba(168, 197, 218, 0.09) 0%, transparent 32%),
+    radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.06) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(168, 197, 218, 0.025) 0%, transparent 60%),
+    var(--page-pattern);
+  background-attachment: fixed;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -15%;
+  right: -8%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(168, 197, 218, 0.055) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb {
+  background: var(--surface-hover);
+  border-radius: 5px;
+  border: 2px solid var(--bg-primary);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--accent-moon); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+ul { list-style: none; }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button { font: inherit; }
+
+[hidden] { display: none !important; }
+
+:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ── Gradient text ─────────────────────────────────────────────────────── */
+.gradient-text-pink,
+.gradient-text-indigo,
+.gradient-text-lumen,
+.gradient-text-gold {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.gradient-text-pink { background-image: linear-gradient(135deg, var(--accent-pink), var(--accent-orange)); }
+.gradient-text-indigo { background-image: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan)); }
+.gradient-text-lumen { background-image: linear-gradient(135deg, #f8fbff, var(--accent-silver), var(--accent-moon)); }
+.gradient-text-gold { background-image: linear-gradient(135deg, #fde68a, var(--saiyan-gold), #f59e0b); }
+
+/* ── Glass panel & section headings ────────────────────────────────────── */
+.glass-panel {
+  background: var(--surface-color);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  box-shadow: var(--shadow-premium);
+  transition: var(--transition-smooth);
+}
+
+.glass-panel:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
+}
+
+.section-title {
+  font-size: clamp(1.9rem, 5vw, 2.75rem);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Otaku card primitives ─────────────────────────────────────────────── */
+.funny-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: stretch;
+}
+
+.otaku-card {
+  padding: 2.5rem;
+  border-color: var(--card-border);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.otaku-card:hover {
+  border-color: var(--card-border-hover);
+  box-shadow: 0 0 30px var(--card-glow);
+}
+
+.otaku-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.otaku-badge {
+  padding: 0.3rem 1rem;
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-orange));
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.anime-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+}
+
+.anime-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.anime-item:hover img { transform: scale(1.1); }
+
+.anime-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.5rem;
+  background: rgba(10, 14, 23, 0.85);
+  backdrop-filter: blur(4px);
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-orange);
+  transform: translateY(100%);
+  transition: var(--transition-smooth);
+}
+
+.anime-item:hover .anime-caption { transform: translateY(0); }
+
+/* ── Ghost pet (free-roaming companion) ────────────────────────────────── */
+.pet-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 96px;
+  pointer-events: none;
+  z-index: var(--z-pet);
+  will-change: transform;
+  transform: translate(0px, 0px);
+}
+
+.pet-character {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 14px rgba(160, 120, 255, 0.7)) drop-shadow(0 0 4px rgba(200, 180, 255, 0.3));
+  transition: transform 0.25s ease;
+}
+
+.pet-character.flipped { transform: scaleX(-1); }
+
+.pet-body {
+  width: 100%;
+  height: 100%;
+  animation: ghostBob 0.52s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+@keyframes ghostBob {
+  0% { transform: translateY(0) rotate(-2deg); }
+  100% { transform: translateY(-7px) rotate(2deg); }
+}
+
+.pet-character.idle .pet-body { animation: ghostIdle 2.6s ease-in-out infinite; }
+
+@keyframes ghostIdle {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  40% { transform: translateY(-10px) rotate(1deg); }
+  70% { transform: translateY(-5px) rotate(-0.4deg); }
+}
+
+.pet-character.idle { animation: glowPulse 2.4s ease-in-out infinite; }
+
+@keyframes glowPulse {
+  0%, 100% { filter: drop-shadow(0 0 16px rgba(160, 120, 255, 0.6)) drop-shadow(0 0 5px rgba(200, 180, 255, 0.3)); }
+  50% { filter: drop-shadow(0 0 34px rgba(200, 160, 255, 1)) drop-shadow(0 0 12px rgba(230, 210, 255, 0.55)); }
+}
+
+.paw-trail {
+  position: fixed;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: rgba(160, 120, 255, 0.75);
+  pointer-events: none;
+  z-index: calc(var(--z-pet) - 1);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(180, 140, 255, 0.6), 0 0 22px rgba(160, 120, 255, 0.3);
+  animation: trailFade 1.6s ease-out forwards;
+}
+
+@keyframes trailFade {
+  0% { opacity: 0.9; transform: translate(-50%, -50%) scale(1); }
+  40% { opacity: 0.5; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(3.2); }
+}
+
+/* ── Reduced motion ────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,517 @@
+/* ==========================================================================
+   OTAKU ZONE — VAULT FEATURES
+   Death Note, Tier List Forge, Summon Gate (gacha + collection binder).
+   ========================================================================== */
+
+/* ── Death Note ────────────────────────────────────────────────────────── */
+.dn-badge { background: linear-gradient(135deg, #111, #3f3f46) !important; border: 1px solid rgba(255, 255, 255, 0.2); }
+
+#death-note .dn-book { flex: 1; }
+
+.dn-book {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.9);
+}
+
+.dn-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06), transparent 30%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.015) 0 2px, transparent 2px 4px),
+    #0a0a0a;
+  border-right: 3px solid #1c1c1c;
+}
+
+.dn-cover span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: 'Old English Text MT', 'UnifrakturMaguntia', 'Times New Roman', serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.12em;
+  color: #e5e5e5;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.dn-page {
+  padding: 1rem 1.1rem 1.1rem;
+  background:
+    repeating-linear-gradient(180deg, transparent 0 25px, rgba(15, 23, 42, 0.12) 25px 26px),
+    #eceae4;
+  color: #1c1917;
+}
+
+.dn-heading {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  color: #57534e;
+  margin-bottom: 0.4rem;
+}
+
+.dn-rules {
+  list-style: upper-roman;
+  padding-left: 1.4rem;
+  margin-bottom: 0.9rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #292524;
+}
+
+.dn-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.dn-form input,
+.dn-form select {
+  flex: 1 1 150px;
+  min-width: 0;
+  padding: 0.55rem 0.7rem;
+  border: 0;
+  border-bottom: 2px solid #1c1917;
+  background: rgba(255, 255, 255, 0.55);
+  color: #0c0a09;
+  font: italic 600 0.95rem Georgia, 'Times New Roman', serif;
+  outline: none;
+}
+
+.dn-form select { flex: 0 1 170px; font-style: normal; font-size: 0.82rem; }
+
+.dn-form input:focus,
+.dn-form select:focus { border-bottom-color: #b91c1c; background: #fff; }
+
+.dn-write { background: linear-gradient(135deg, #1c1917, #450a0a) !important; }
+
+.dn-response {
+  min-height: 1.4em;
+  margin-top: 0.6rem;
+  font-family: Georgia, serif;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: #44403c;
+}
+
+.dn-response--ok { color: #7f1d1d; }
+.dn-response--warn { color: #92400e; }
+
+.dn-entries { display: grid; gap: 0.35rem; margin-top: 0.4rem; }
+
+.dn-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0.5rem;
+  border-left: 3px solid #b91c1c;
+  background: rgba(255, 255, 255, 0.5);
+  font-family: Georgia, serif;
+}
+
+.dn-entry-name { flex: 1; font-style: italic; font-weight: 700; }
+.dn-entry-status { font-size: 0.75rem; color: #57534e; font-variant-numeric: tabular-nums; }
+.dn-entry.is-dead { opacity: 0.75; text-decoration: line-through; text-decoration-color: #b91c1c; }
+
+.dn-tear {
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 1px solid #a8a29e;
+  border-radius: 6px;
+  background: transparent;
+  color: #57534e;
+  cursor: pointer;
+}
+
+.dn-tear:hover { color: #b91c1c; border-color: #b91c1c; }
+
+/* Victims (applied to any [data-deathnote] target or a whole card) */
+.is-dn-dying { animation: heartAttack 1.2s ease-in-out; }
+
+@keyframes heartAttack {
+  0%, 100% { translate: 0 0; }
+  10%, 30%, 50% { translate: -4px 1px; }
+  20%, 40%, 60% { translate: 4px -1px; }
+  75% { translate: 0 0; scale: 1.02; }
+}
+
+.is-dn-dead {
+  position: relative;
+  filter: grayscale(1) brightness(0.55);
+  rotate: -1deg;
+  transition: filter 800ms ease, rotate 800ms ease;
+}
+
+.dn-tombstone {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: 3;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f5f5f4;
+  font: italic 600 0.78rem Georgia, serif;
+  white-space: nowrap;
+  pointer-events: none;
+  filter: none;
+}
+
+/* ── Tier List Forge ───────────────────────────────────────────────────── */
+.tier-forge { display: grid; gap: 0.9rem; }
+
+.tier-toolbar { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+.tier-rows {
+  display: grid;
+  gap: 4px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tier-row {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  min-height: 84px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tier-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--tier);
+  color: #0b0f19;
+}
+
+.tier-label strong { font-family: var(--font-display); font-size: 1.8rem; line-height: 1; }
+.tier-label span { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.75; }
+
+.tier-zone,
+.tier-pool {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0.4rem;
+  padding: 0.45rem;
+  min-height: 84px;
+  transition: background 150ms ease;
+}
+
+.tier-zone.is-drop-target,
+.tier-pool.is-drop-target { background: color-mix(in srgb, var(--tier, #a855f7) 18%, transparent); }
+
+.tier-pool-wrap {
+  border-radius: 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.tier-pool-label {
+  display: block;
+  padding: 0.5rem 0.7rem 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.tier-pool.is-empty::after {
+  content: 'Every title has a verdict. Ruthless.';
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-style: italic;
+  padding: 0.4rem;
+}
+
+.tier-chip {
+  position: relative;
+  width: 64px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #111827;
+  color: var(--text-main);
+  cursor: grab;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  user-select: none;
+}
+
+.tier-chip:hover { transform: translateY(-2px); box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.8); }
+
+.tier-chip.is-selected {
+  outline: 2px solid var(--saiyan-gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.5);
+}
+
+.tier-chip.is-dragging { opacity: 0.3; }
+
+.tier-chip-art {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.tier-chip-art--blank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #4c1d95, #1e1b4b);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.tier-chip-title {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 0.15rem 0.2rem;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 0.55rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tier-ghost {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-hud);
+  pointer-events: none;
+  opacity: 0.9;
+  rotate: -4deg;
+  box-shadow: 0 16px 30px -8px rgba(0, 0, 0, 0.9);
+}
+
+/* ── Summon Gate ───────────────────────────────────────────────────────── */
+.summon { display: grid; gap: 1.4rem; }
+
+.summon-banner {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.2rem;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 20% 40%, rgba(251, 191, 36, 0.18), transparent 55%),
+    radial-gradient(circle at 80% 70%, rgba(217, 70, 239, 0.14), transparent 55%),
+    rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+}
+
+.summon-art { position: relative; height: 220px; }
+
+.summon-art-card {
+  position: absolute;
+  top: 10px;
+  left: calc(50% - 70px + (var(--i) - 1) * 80px);
+  width: 140px;
+  aspect-ratio: 2 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #fbbf24;
+  box-shadow: 0 0 24px rgba(251, 191, 36, 0.35);
+  rotate: calc((var(--i) - 1) * 10deg);
+  z-index: calc(3 - var(--i));
+}
+
+.summon-art-card:nth-child(2) { z-index: 3; top: 0; }
+.summon-art-card img { width: 100%; height: 100%; object-fit: cover; }
+
+.summon-copy { display: grid; gap: 0.6rem; }
+
+.summon-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #fde68a, #fbbf24, #d946ef);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.summon-rates { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.rate {
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid;
+}
+
+.rate b { font-family: var(--font-mono); }
+.rate--ssr { color: #fde68a; border-color: rgba(251, 191, 36, 0.5); background: rgba(251, 191, 36, 0.1); }
+.rate--sr { color: #e9d5ff; border-color: rgba(168, 85, 247, 0.5); background: rgba(168, 85, 247, 0.1); }
+.rate--r { color: #cbd5e1; border-color: rgba(148, 163, 184, 0.4); background: rgba(148, 163, 184, 0.08); }
+
+.summon-pity { color: var(--text-muted); font-size: 0.8rem; }
+
+.summon-tickets {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #fde68a;
+  font-size: 0.95rem;
+}
+
+.summon-tickets strong { font-family: var(--font-display); font-size: 1.5rem; }
+.summon-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+.summon-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+  gap: 0.8rem;
+  min-height: 80px;
+}
+
+.summon-empty {
+  grid-column: 1 / -1;
+  align-self: center;
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+}
+
+.summon-results.is-revealing .gacha-card { animation: cardReveal 650ms var(--reveal-delay, 0ms) cubic-bezier(0.2, 0.9, 0.3, 1.2) backwards; }
+
+@keyframes cardReveal {
+  0% { opacity: 0; transform: rotateY(90deg) scale(0.85); filter: brightness(3); }
+  60% { opacity: 1; filter: brightness(1.6); }
+  100% { transform: none; filter: none; }
+}
+
+/* Card */
+.gacha-card {
+  --rar: #94a3b8;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0b1120;
+  border: 2px solid var(--rar);
+  box-shadow: 0 0 16px -4px var(--rar);
+}
+
+.gacha-card.rarity-SR { --rar: #a855f7; }
+.gacha-card.rarity-SSR { --rar: #fbbf24; }
+
+.gacha-card.rarity-SSR::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.35) 50%, transparent 65%);
+  background-size: 250% 100%;
+  animation: foil 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes foil { from { background-position: 150% 0; } to { background-position: -100% 0; } }
+
+.gacha-card-art { aspect-ratio: 2 / 3; overflow: hidden; background: #111827; }
+.gacha-card-art img { width: 100%; height: 100%; object-fit: cover; }
+
+.gacha-rarity {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.4rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.75);
+  color: var(--rar);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+.gacha-count {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.gacha-card.is-fresh .gacha-rarity::after { content: ' NEW'; color: #4ade80; }
+
+.gacha-card-copy { padding: 0.45rem 0.55rem 0.55rem; }
+.gacha-card-copy strong { display: block; font-size: 0.8rem; line-height: 1.2; }
+.gacha-card-copy span { display: block; color: var(--text-muted); font-size: 0.68rem; }
+
+.gacha-card.is-locked { border-style: dashed; box-shadow: none; }
+.gacha-card.is-locked .gacha-card-art { background: radial-gradient(circle at 50% 35%, #334155, #1e1b4b 70%); }
+.gacha-card.is-locked .gacha-card-art img { filter: brightness(0); opacity: 0.8; }
+.gacha-card.is-locked::after { display: none; }
+
+/* Binder */
+.summon-binder-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.summon-binder-head h4 { font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+.summon-binder-head h4 span { color: var(--text-muted); font-size: 0.8rem; font-weight: 600; }
+
+.binder-filters { display: inline-flex; gap: 0.3rem; }
+
+.binder-filter {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.binder-filter[aria-pressed="true"] { color: #fff; border-color: rgba(251, 191, 36, 0.5); background: rgba(251, 191, 36, 0.12); }
+
+.binder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 0.6rem;
+}
+
+.binder-grid .gacha-card-copy strong { font-size: 0.7rem; }
+.binder-grid .gacha-card-copy span { font-size: 0.6rem; }
+
+@media (max-width: 760px) {
+  .summon-banner { grid-template-columns: 1fr; }
+  .summon-art { height: 200px; }
+  .summon-art-card { width: 120px; left: calc(50% - 60px + (var(--i) - 1) * 70px); }
+  .dn-book { grid-template-columns: 1fr; }
+  .dn-cover { padding: 0.6rem; border-right: 0; border-bottom: 3px solid #1c1c1c; }
+  .dn-cover span { writing-mode: horizontal-tb; transform: none; }
+  .tier-row { grid-template-columns: 58px minmax(0, 1fr); }
+  .tier-chip { width: 54px; }
+}

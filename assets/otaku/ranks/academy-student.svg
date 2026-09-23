@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><defs><linearGradient id="wood" x1="0" x2="1"><stop offset="0" stop-color="#b45309"/><stop offset="1" stop-color="#78350f"/></linearGradient></defs>
+    <rect x="40" y="46" width="20" height="48" rx="3" fill="url(#wood)"/>
+    <path d="M40 62h20M40 78h20" stroke="#451a03" stroke-width="1.5" opacity=".6"/>
+    <circle cx="50" cy="38" r="26" fill="#f8fafc" stroke="#451a03" stroke-width="2"/>
+    <circle cx="50" cy="38" r="19" fill="#dc2626"/>
+    <circle cx="50" cy="38" r="12" fill="#f8fafc"/>
+    <circle cx="50" cy="38" r="5.5" fill="#dc2626"/>
+    
+  <g transform="translate(52 36) rotate(135)">
+    <path d="M0 0 L-16 -5 L-24 0 L-16 5 Z" fill="#e2e8f0" stroke="#475569" stroke-width="1"/>
+    <path d="M-16 0 L-24 0" stroke="#94a3b8" stroke-width="1"/>
+    <rect x="-38" y="-2.2" width="14" height="4.4" rx="1" fill="#1e293b"/>
+    <path d="M-36 -2.2 v4.4 M-32 -2.2 v4.4 M-28 -2.2 v4.4" stroke="#475569" stroke-width="1"/>
+    <circle cx="-42" cy="0" r="4" fill="none" stroke="#94a3b8" stroke-width="2"/>
+  </g></svg>

@@ -3,620 +3,91 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Er_Wx - Secret Otaku Zone</title>
   <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#080c16">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="./index.css">
-
-  <style>
-    .otaku-page-wrapper {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      padding: 6rem 2rem 5rem;
-    }
-
-    .otaku-back-btn {
-      position: fixed;
-      top: 1.5rem;
-      left: 2rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.6rem 1.2rem;
-      background: rgba(15, 22, 40, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-decoration: none;
-      backdrop-filter: blur(12px);
-      transition: var(--transition-smooth);
-      z-index: 100;
-    }
-
-    .otaku-back-btn:hover {
-      color: var(--accent-cyan);
-      border-color: rgba(0, 242, 254, 0.3);
-    }
-
-    .otaku-secret-header {
-      max-width: 820px;
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .otaku-secret-header .secret-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1rem;
-      background: rgba(255, 8, 68, 0.1);
-      border: 1px solid rgba(255, 8, 68, 0.25);
-      border-radius: 20px;
-      color: var(--accent-pink);
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      margin-bottom: 1.2rem;
-    }
-
-    .otaku-page-content {
-      width: 100%;
-      max-width: 1120px;
-    }
-
-    .otaku-alias-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
-    }
-
-    .otaku-alias-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      padding: 0.7rem 1rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.035);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    .gradient-text-lumen {
-      background: linear-gradient(135deg, #f8fbff, var(--accent-silver), var(--accent-moon));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-    }
-
-    .otaku-card-wide {
-      grid-column: 1 / -1;
-    }
-
-    .otaku-note {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-    }
-
-    .otaku-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .otaku-list-item {
-      padding: 1rem 1.15rem;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.025);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .otaku-list-item h5 {
-      font-size: 0.98rem;
-      margin-bottom: 0.35rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .otaku-list-item p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    .otaku-stat-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .otaku-stat {
-      padding: 1.1rem;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.025);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .otaku-stat h5 {
-      font-size: 0.95rem;
-      margin-bottom: 0.35rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .otaku-stat p {
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-    }
-
-    .ranked-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-      margin-top: 1.5rem;
-    }
-
-    .ranked-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 0.95rem 1rem;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.025);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .ranked-number {
-      width: 2rem;
-      height: 2rem;
-      flex: 0 0 2rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent-pink), var(--accent-orange));
-      color: #fff;
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-
-    .ranked-copy strong {
-      display: block;
-      font-size: 0.95rem;
-    }
-
-    .ranked-copy span {
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-    }
-
-    .split-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .split-list-block {
-      padding: 1.1rem;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.025);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .split-list-block h5 {
-      font-size: 0.95rem;
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-    }
-
-    .split-list-block ul {
-      display: flex;
-      flex-direction: column;
-      gap: 0.55rem;
-    }
-
-    .split-list-block li {
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-    }
-
-    .ritual-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .ritual-card {
-      padding: 1.05rem;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.025);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .ritual-card h5 {
-      font-size: 0.95rem;
-      margin-bottom: 0.35rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .ritual-card p {
-      color: var(--text-secondary);
-      font-size: 0.88rem;
-    }
-
-    .manhwa-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .manhwa-card {
-      position: relative;
-      overflow: hidden;
-      padding: 1.15rem;
-      border-radius: 18px;
-      background:
-        linear-gradient(180deg, rgba(99, 102, 241, 0.12) 0%, rgba(19, 26, 46, 0.72) 65%),
-        rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(168, 85, 247, 0.16);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    }
-
-    .manhwa-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(135deg, var(--accent-pink), #8b5cf6);
-      opacity: 0.85;
-    }
-
-    .manhwa-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.28rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(8, 12, 22, 0.65);
-      color: var(--text-main);
-      font-size: 0.76rem;
-      font-weight: 700;
-      margin-bottom: 0.9rem;
-    }
-
-    .manhwa-card h5 {
-      font-size: 1rem;
-      margin-bottom: 0.35rem;
-    }
-
-    .manhwa-card p {
-      color: var(--text-secondary);
-      font-size: 0.86rem;
-    }
-
-    .music-deck {
-      margin-top: 1.5rem;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 1.2rem;
-      align-items: start;
-    }
-
-    .spotify-shell {
-      padding: 1rem;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .spotify-shell iframe {
-      width: 100%;
-      min-height: 352px;
-      border: 0;
-      border-radius: 14px;
-    }
-
-    .track-selector {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .track-button {
-      width: 100%;
-      text-align: left;
-      cursor: pointer;
-      padding: 1rem 1.05rem;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.025);
-      color: var(--text-main);
-      transition: var(--transition-smooth);
-    }
-
-    .track-button:hover,
-    .track-button.is-active {
-      transform: translateX(4px);
-      border-color: rgba(168, 85, 247, 0.35);
-      background: rgba(168, 85, 247, 0.08);
-      box-shadow: 0 0 22px rgba(168, 85, 247, 0.12);
-    }
-
-    .track-button strong {
-      display: block;
-      font-size: 0.94rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .track-button span {
-      color: var(--text-secondary);
-      font-size: 0.83rem;
-    }
-
-    .visual-poster-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .visual-poster {
-      position: relative;
-      overflow: hidden;
-      min-height: 220px;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: var(--bg-secondary);
-    }
-
-    .visual-poster img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: var(--transition-smooth);
-    }
-
-    .visual-poster::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(8, 12, 22, 0) 20%, rgba(8, 12, 22, 0.88) 100%);
-    }
-
-    .visual-poster:hover img {
-      transform: scale(1.04);
-    }
-
-    .visual-poster-caption {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 1;
-      padding: 1rem 0.95rem;
-    }
-
-    .visual-poster-caption strong {
-      display: block;
-      font-size: 0.92rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .visual-poster-caption span {
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-    }
-
-    .shot-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .shot-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 18px;
-      min-height: 220px;
-      background: var(--bg-secondary);
-      border: 1px solid rgba(168, 85, 247, 0.16);
-    }
-
-    .shot-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: var(--transition-smooth);
-    }
-
-    .shot-card:hover img {
-      transform: scale(1.03);
-    }
-
-    .shot-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(8, 12, 22, 0.02) 25%, rgba(8, 12, 22, 0.9) 100%);
-    }
-
-    .shot-card span {
-      position: absolute;
-      left: 1rem;
-      bottom: 0.95rem;
-      z-index: 1;
-      color: var(--text-main);
-      font-size: 0.86rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .spotify-link-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 0.9rem;
-    }
-
-    .spotify-link-row a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.025);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-      font-weight: 600;
-    }
-
-    .spotify-link-row a:hover {
-      color: var(--accent-cyan);
-      border-color: rgba(0, 242, 254, 0.25);
-    }
-
-    .speech-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      margin-top: 1.5rem;
-    }
-
-    .speech-entry {
-      display: grid;
-      grid-template-columns: 132px 1fr;
-      gap: 1rem;
-      align-items: stretch;
-      padding: 1rem;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .speech-portrait {
-      min-height: 100%;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: var(--bg-secondary);
-    }
-
-    .speech-portrait img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .speech-copy h4 {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 1rem;
-      margin-bottom: 0.55rem;
-    }
-
-    .speech-copy p {
-      color: var(--text-secondary);
-      font-size: 0.84rem;
-      margin-bottom: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .speech-copy blockquote {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      line-height: 1.7;
-      border-left: 3px solid rgba(255, 8, 68, 0.35);
-      padding-left: 1rem;
-      margin: 0;
-      white-space: pre-line;
-    }
-
-    @media (max-width: 900px) {
-      .funny-grid,
-      .otaku-stat-grid,
-      .split-list,
-      .ritual-grid,
-      .manhwa-grid,
-      .music-deck,
-      .visual-poster-grid,
-      .shot-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .otaku-card-wide {
-        grid-column: auto;
-      }
-
-      .speech-entry {
-        grid-template-columns: 1fr;
-      }
-
-      .speech-portrait {
-        max-height: 260px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="otaku/css/otaku-base.css">
+  <link rel="stylesheet" href="otaku/css/otaku-layout.css">
+  <link rel="stylesheet" href="otaku/css/otaku-arcade.css">
+  <link rel="stylesheet" href="otaku/css/otaku-vault.css">
+  <link rel="stylesheet" href="otaku/css/otaku-fx.css">
+  <link rel="stylesheet" href="otaku/css/otaku-skins.css">
 </head>
 
 <body>
 
-  <a href="./index.html" class="otaku-back-btn">
-    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+  <a href="./index.html" class="otaku-back-btn" aria-label="Back to Portfolio">
+    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> <span class="label-long">Back to Portfolio</span>
   </a>
 
+  <nav class="command-dock" id="command-dock" aria-label="Otaku controls">
+    <button class="dock-btn" type="button" data-dock="sfx" aria-pressed="false" aria-label="Sound effects (Forbidden Chakra)"
+      title="Unleash Forbidden Chakra: sound effects (M)">
+      <i class="fa-solid fa-volume-xmark" aria-hidden="true"></i>
+      <span class="dock-label">Forbidden Chakra</span><kbd>M</kbd>
+    </button>
+    <button class="dock-btn" type="button" data-dock="scouter" aria-pressed="false" aria-label="Scouter mode"
+      title="Scouter: read power levels (K)">
+      <i class="fa-solid fa-glasses" aria-hidden="true"></i>
+      <span class="dock-label">Scouter</span><kbd>K</kbd>
+    </button>
+    <div class="dock-skin">
+      <button class="dock-btn" type="button" data-dock="skin" aria-haspopup="true" aria-expanded="false"
+        aria-controls="skin-menu" aria-label="Faction skin" title="Faction skin (F)">
+        <i class="fa-solid fa-palette" aria-hidden="true"></i><kbd>F</kbd>
+      </button>
+      <div class="skin-menu" id="skin-menu" role="menu" aria-label="Faction skins" hidden></div>
+    </div>
+    <button class="dock-btn" type="button" data-dock="help" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (?)">
+      <i class="fa-solid fa-keyboard" aria-hidden="true"></i><kbd>?</kbd>
+    </button>
+  </nav>
+
   <div class="otaku-page-wrapper">
-    <div class="otaku-secret-header">
+    <header class="otaku-secret-header">
       <div class="secret-label">
-        <i class="fa-solid fa-eye-slash"></i> Hidden villain dossier unlocked
+        <i class="fa-solid fa-eye-slash" aria-hidden="true"></i> Hidden villain dossier unlocked
       </div>
-      <h1 class="section-title"><span class="gradient-text-pink">Algebra</span> | <span
+      <h1 class="section-title" data-power-level="7777777" data-power-name="Algebra | BlackPanther | Lumen_Tx"
+        data-power-class="Dossier owner"><span class="gradient-text-pink">Algebra</span> | <span
           class="gradient-text-indigo">BlackPanther</span> | <span class="gradient-text-lumen">Lumen_Tx</span></h1>
       <p class="section-subtitle">Anime alter ego archive. Chaotic, mysterious, funny, slightly villain-coded, and
         powered by elite taste, weekly episode loyalty, and absolutely zero VF propaganda.</p>
       <div class="otaku-alias-row">
-        <span class="otaku-alias-pill"><i class="fa-solid fa-crown"></i> Lelouch-core energy</span>
-        <span class="otaku-alias-pill"><i class="fa-solid fa-book-open-reader"></i> Manga / manhwa locked in</span>
-        <span class="otaku-alias-pill"><i class="fa-solid fa-headphones"></i> Lights off. Headphones on.</span>
-        <span class="otaku-alias-pill"><i class="fa-solid fa-closed-captioning"></i> Sub + VOSTFR only</span>
+        <span class="otaku-alias-pill"><i class="fa-solid fa-crown" aria-hidden="true"></i> Lelouch-core energy</span>
+        <span class="otaku-alias-pill"><i class="fa-solid fa-book-open-reader" aria-hidden="true"></i> Manga / manhwa locked in</span>
+        <span class="otaku-alias-pill"><i class="fa-solid fa-headphones" aria-hidden="true"></i> Lights off. Headphones on.</span>
+        <span class="otaku-alias-pill"><i class="fa-solid fa-closed-captioning" aria-hidden="true"></i> Sub + VOSTFR only</span>
+        <button class="otaku-alias-pill otaku-alias-pill--action" type="button" data-replay-op>
+          <i class="fa-solid fa-play" aria-hidden="true"></i> Replay OP
+        </button>
       </div>
-    </div>
+    </header>
 
-    <div class="otaku-page-content">
+    <nav class="quick-nav" aria-label="Dossier sections">
+      <ul>
+        <li><a href="#dossier"><i class="fa-solid fa-user-secret" aria-hidden="true"></i> Dossier</a></li>
+        <li><a href="#commandments"><i class="fa-solid fa-trophy" aria-hidden="true"></i> Top Five</a></li>
+        <li><a href="#new-gen"><i class="fa-solid fa-bolt" aria-hidden="true"></i> New Gen</a></li>
+        <li><a href="#death-note"><i class="fa-solid fa-book-skull" aria-hidden="true"></i> Death Note</a></li>
+        <li><a href="#locked-in"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Locked In</a></li>
+        <li><a href="#immersion-deck"><i class="fa-brands fa-spotify" aria-hidden="true"></i> Deck</a></li>
+        <li><a href="#throne-speeches"><i class="fa-solid fa-chess-king" aria-hidden="true"></i> Speeches</a></li>
+        <li><a href="#tier-forge"><i class="fa-solid fa-ranking-star" aria-hidden="true"></i> Tier List</a></li>
+        <li><a href="#summon-gate"><i class="fa-solid fa-dungeon" aria-hidden="true"></i> Summon</a></li>
+        <li><a href="#otaku-arcade"><i class="fa-solid fa-gamepad" aria-hidden="true"></i> Arcade</a></li>
+        <li><a href="#secret-codex"><i class="fa-solid fa-lock" aria-hidden="true"></i> Codex</a></li>
+      </ul>
+    </nav>
+
+    <main class="otaku-page-content">
       <div class="funny-grid">
 
-        <div class="otaku-card glass-panel">
+        <!-- ── Dossier (static prose) ─────────────────────────────────────── -->
+        <section class="otaku-card glass-panel" id="dossier">
           <div class="otaku-header">
             <h3>Hidden Villain Dossier</h3>
             <span class="otaku-badge">Restricted Profile</span>
@@ -627,431 +98,467 @@
           </p>
           <div class="otaku-stat-grid">
             <div class="otaku-stat">
-              <h5><i class="fa-solid fa-user-secret" style="color: var(--accent-pink);"></i> Core archetype</h5>
+              <h5><i class="fa-solid fa-user-secret" style="color: var(--accent-pink);" aria-hidden="true"></i> Core archetype</h5>
               <p>Lelouch is the real deal. Intelligence, rebellion, manipulation, and the exact amount of theatrical
                 superiority complex.</p>
             </div>
             <div class="otaku-stat">
-              <h5><i class="fa-solid fa-dragon" style="color: var(--accent-cyan);"></i> Taste profile</h5>
-              <p>Mind games, shonen hype, dark psychological stories, and innovative isekai that actually have sauce.
-              </p>
+              <h5><i class="fa-solid fa-dragon" style="color: var(--accent-cyan);" aria-hidden="true"></i> Taste profile</h5>
+              <p>Mind games, shonen hype, dark psychological stories, and innovative isekai that actually have sauce.</p>
             </div>
             <div class="otaku-stat">
-              <h5><i class="fa-solid fa-globe" style="color: var(--accent-orange);"></i> World selection</h5>
-              <p>Would live in Frieren. Would never sign a lease in Berserk. That world is straight trauma management.
-              </p>
+              <h5><i class="fa-solid fa-globe" style="color: var(--accent-orange);" aria-hidden="true"></i> World selection</h5>
+              <p>Would live in Frieren. Would never sign a lease in Berserk. That world is straight trauma management.</p>
             </div>
           </div>
           <div class="otaku-list">
             <div class="otaku-list-item">
-              <h5><i class="fa-solid fa-user-astronaut" style="color: var(--accent-indigo);"></i> Favorite characters
-              </h5>
+              <h5><i class="fa-solid fa-user-astronaut" style="color: var(--accent-indigo);" aria-hidden="true"></i> Favorite characters</h5>
               <p>Lelouch vi Britannia, Soul, and Tanya. Smart, rebellious, manipulative, and never trapped in generic
                 protagonist energy.</p>
             </div>
             <div class="otaku-list-item">
-              <h5><i class="fa-solid fa-ghost" style="color: var(--accent-pink);"></i> Dossier footnote</h5>
+              <h5><i class="fa-solid fa-ghost" style="color: var(--accent-pink);" aria-hidden="true"></i> Dossier footnote</h5>
               <p>The ghost is still loose on this page because every secret archive deserves one suspicious mascot.</p>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="otaku-card glass-panel" style="justify-content: space-between;">
+        <!-- ── Top Five (data/library.js → render-library.js) ────────────── -->
+        <section class="otaku-card glass-panel" id="commandments">
           <div class="otaku-header">
             <h3>Top Five Commandments</h3>
-            <span class="otaku-badge"
-              style="background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));">Masterpiece Tier</span>
+            <span class="otaku-badge" style="background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));">Masterpiece Tier</span>
           </div>
-          <p class="otaku-note">
-            The strict top five. No diplomacy. No committee vote. No peace treaty.
-          </p>
-          <div class="anime-grid">
-            <div class="anime-item" title="Code Geass">
-              <img src="assets/Code-Geass-R2.jpg" alt="Code Geass chess and rebellion">
-              <div class="anime-caption">Code Geass</div>
-            </div>
-            <div class="anime-item" title="Fullmetal Alchemist">
-              <img src="assets/fullMetal.jpg" alt="Fullmetal Alchemist brotherhood and consequence">
-              <div class="anime-caption">Fullmetal</div>
-            </div>
-            <div class="anime-item" title="Naruto">
-              <img src="assets/Naruto.jpg" alt="Naruto willpower and legacy">
-              <div class="anime-caption">Naruto</div>
-            </div>
-          </div>
-          <div class="ranked-list">
-            <div class="ranked-item">
-              <span class="ranked-number">1</span>
-              <div class="ranked-copy"><strong>Code Geass</strong><span>The throne, the scheme, the speechcraft.</span>
-              </div>
-            </div>
-            <div class="ranked-item">
-              <span class="ranked-number">2</span>
-              <div class="ranked-copy"><strong>Fullmetal Alchemist</strong><span>Consequences, tension, and elite cast
-                  work.</span></div>
-            </div>
-            <div class="ranked-item">
-              <span class="ranked-number">3</span>
-              <div class="ranked-copy"><strong>Gurren Lagann</strong><span>Pure irrational hype weaponized into
-                  greatness.</span></div>
-            </div>
-            <div class="ranked-item">
-              <span class="ranked-number">4</span>
-              <div class="ranked-copy"><strong>Naruto</strong><span>Legacy, speeches, and endings that still hit.</span>
-              </div>
-            </div>
-            <div class="ranked-item">
-              <span class="ranked-number">5</span>
-              <div class="ranked-copy"><strong>Saga of Tanya the Evil</strong><span>Strategic menace with divine
-                  disrespect.</span></div>
-            </div>
-          </div>
-        </div>
+          <p class="otaku-note">The strict top five. No diplomacy. No committee vote. No peace treaty.</p>
+          <div class="anime-grid anime-grid--five" data-render="top-five-covers"></div>
+          <div class="ranked-list" data-render="top-five"></div>
+        </section>
 
-        <div class="otaku-card glass-panel" style="justify-content: space-between;">
+        <!-- ── New Gen (data/library.js) ─────────────────────────────────── -->
+        <section class="otaku-card glass-panel" id="new-gen">
           <div class="otaku-header">
             <h3>New Gen & Special Mentions</h3>
-            <span class="otaku-badge"
-              style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-moon));">Supplementary Evidence</span>
+            <span class="otaku-badge" style="background: linear-gradient(135deg, var(--accent-blue), var(--accent-moon));">Supplementary Evidence</span>
           </div>
           <p class="otaku-note">
             Respect also goes to the titles that pull up from the side and force themselves into the conversation.
           </p>
-          <div class="visual-poster-grid">
-            <div class="visual-poster">
-              <img src="https://static.wikia.nocookie.net/smart-characters-scaling/images/f/f4/Kiyotaka_Ayanokoji.png/revision/latest?cb=20231001225554"
-                alt="Classroom of the Elite visual">
-              <div class="visual-poster-caption">
-                <strong>Classroom of the Elite</strong>
-                <span>Cold eyes, colder agenda.</span>
-              </div>
-            </div>
-            <div class="visual-poster">
-              <img src="https://static.wikia.nocookie.net/wistoria/images/6/6a/Wistoria_Wand_and_Sword_Key_Visual_2.png/revision/latest?cb=20240528155942"
-                alt="Wistoria Wand and Sword visual">
-              <div class="visual-poster-caption">
-                <strong>Wistoria</strong>
-                <span>Pure fantasy climb energy.</span>
-              </div>
-            </div>
-            <div class="visual-poster">
-              <img src="https://static.wikia.nocookie.net/kimetsu-no-yaiba/images/e/e7/Infinity_Castle_Trilogy_Key_Visual_3.png/revision/latest?cb=20250903211854"
-                alt="Demon Slayer Infinity Castle visual">
-              <div class="visual-poster-caption">
-                <strong>Demon Slayer</strong>
-                <span>When the visuals refuse to behave.</span>
-              </div>
-            </div>
-            <div class="visual-poster">
-              <img src="https://r2.takopi.org/takopi/manga/cover-vol1.jpg" alt="Takopi's Original Sin cover">
-              <div class="visual-poster-caption">
-                <strong>Takopi's Original Sin</strong>
-                <span>Cute surface, emotional damage underneath.</span>
-              </div>
-            </div>
-          </div>
+          <div class="visual-poster-grid" data-render="new-gen-posters"></div>
           <div class="split-list">
             <div class="split-list-block">
-              <h5><i class="fa-solid fa-bolt" style="color: var(--accent-cyan);"></i> New gen radar</h5>
-              <ul>
-                <li>Classroom of the Elite</li>
-                <li>Wistoria</li>
-                <li>Demon Slayer</li>
-                <li>Takopi's Original Sin</li>
-              </ul>
+              <h5><i class="fa-solid fa-bolt" style="color: var(--accent-cyan);" aria-hidden="true"></i> New gen radar</h5>
+              <ul data-render="new-gen-list"></ul>
             </div>
             <div class="split-list-block">
-              <h5><i class="fa-solid fa-heart-crack" style="color: var(--accent-pink);"></i> Special mentions</h5>
-              <ul>
-                <li>I Want to Eat Your Pancreas</li>
-                <li>Your Lie in April</li>
-                <li>Bubble</li>
-                <li>A Silent Voice</li>
-                <li>Dororo</li>
-              </ul>
+              <h5><i class="fa-solid fa-heart-crack" style="color: var(--accent-pink);" aria-hidden="true"></i> Special mentions</h5>
+              <ul data-render="special-mentions"></ul>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="otaku-card glass-panel" style="justify-content: space-between;">
+        <!-- ── Reader Mode (static prose) ────────────────────────────────── -->
+        <section class="otaku-card glass-panel" id="reader-mode">
           <div class="otaku-header">
             <h3>Reader Mode</h3>
-            <span class="otaku-badge"
-              style="background: linear-gradient(135deg, var(--accent-indigo), var(--accent-pink));">Session Protocol</span>
+            <span class="otaku-badge" style="background: linear-gradient(135deg, var(--accent-indigo), var(--accent-pink));">Session Protocol</span>
           </div>
-          <p class="otaku-note">
-            Regular setup. Irregular levels of immersion. The ritual matters more than the hardware.
-          </p>
+          <p class="otaku-note">Regular setup. Irregular levels of immersion. The ritual matters more than the hardware.</p>
           <div class="ritual-grid">
             <div class="ritual-card">
-              <h5><i class="fa-solid fa-calendar-week" style="color: var(--accent-cyan);"></i> Watch pattern</h5>
+              <h5><i class="fa-solid fa-calendar-week" style="color: var(--accent-cyan);" aria-hidden="true"></i> Watch pattern</h5>
               <p>Weekly episode loyalist, binge monster on relapse, and a ruthless rewatcher once a series earns
                 masterpiece status.</p>
             </div>
             <div class="ritual-card">
-              <h5><i class="fa-solid fa-language" style="color: var(--accent-pink);"></i> Subtitle doctrine</h5>
+              <h5><i class="fa-solid fa-language" style="color: var(--accent-pink);" aria-hidden="true"></i> Subtitle doctrine</h5>
               <p>Sub and VOSTFR only. No VF, no dub, no negotiations.</p>
             </div>
             <div class="ritual-card">
-              <h5><i class="fa-solid fa-moon" style="color: var(--accent-moon);"></i> Immersion state</h5>
+              <h5><i class="fa-solid fa-moon" style="color: var(--accent-moon);" aria-hidden="true"></i> Immersion state</h5>
               <p>Lights off, headphones on, Discord reactions ready, and full tunnel vision on whatever is happening on
                 screen or page.</p>
             </div>
             <div class="ritual-card">
-              <h5><i class="fa-solid fa-book" style="color: var(--accent-orange);"></i> Rewatch offenders</h5>
+              <h5><i class="fa-solid fa-book" style="color: var(--accent-orange);" aria-hidden="true"></i> Rewatch offenders</h5>
               <p>Code Geass, Fullmetal, Gurren Lagann, and Soul Eater all have repeat-violation privileges.</p>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="otaku-card glass-panel" style="justify-content: space-between;">
+        <!-- ── Serious Favorites (data/library.js) ───────────────────────── -->
+        <section class="otaku-card glass-panel" id="favorites">
           <div class="otaku-header">
             <h3>Serious Favorites</h3>
-            <span class="otaku-badge"
-              style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));">No Irony Zone</span>
+            <span class="otaku-badge" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));">No Irony Zone</span>
           </div>
-          <p class="otaku-note">
-            A few picks deserve to be stated plainly because they never left the system.
-          </p>
-          <div class="visual-poster-grid">
-            <div class="visual-poster">
-              <img src="https://www.pikpng.com/pngl/b/538-5388846_goku-mastered-ultra-instinct-vs-jiren-by-jaredsongohan.png"
-                alt="Goku vs Jiren visual">
-              <div class="visual-poster-caption">
-                <strong>Best Fight</strong>
-                <span>Goku vs Jiren was event television.</span>
-              </div>
-            </div>
-            <div class="visual-poster">
-              <img src="assets/Code-Geass-R2.jpg" alt="Code Geass Lelouch visual">
-              <div class="visual-poster-caption">
-                <strong>Best Speech</strong>
-                <span>Damocles. F.L.E.I.J.A. Authority.</span>
-              </div>
-            </div>
-            <div class="visual-poster">
-              <img src="assets/Naruto.jpg" alt="Naruto ending legacy visual">
-              <div class="visual-poster-caption">
-                <strong>Endings That Stayed</strong>
-                <span>Naruto still carries that final-residue effect.</span>
-              </div>
-            </div>
-            <div class="visual-poster">
-              <img src="https://static.wikia.nocookie.net/mappa/images/1/17/AOTFS_part_2_KV_3.png/revision/latest?cb=20211105155418"
-                alt="Attack on Titan final season visual">
-              <div class="visual-poster-caption">
-                <strong>Permanent Residue</strong>
-                <span>Attack on Titan and Dororo still linger.</span>
-              </div>
-            </div>
-          </div>
-          <div class="otaku-list" style="margin-top: 0;">
-            <div class="otaku-list-item">
-              <h5><i class="fa-solid fa-fire" style="color: var(--accent-orange);"></i> Best fight</h5>
-              <p>Goku vs Jiren in Tournament of Power. That whole fight felt like a global event.</p>
-            </div>
-            <div class="otaku-list-item">
-              <h5><i class="fa-solid fa-bullhorn" style="color: var(--accent-pink);"></i> Best speech</h5>
-              <p>Lelouch's Damocles and F.L.E.I.J.A proclamation. Pure theatrical domination.</p>
-            </div>
-            <div class="otaku-list-item">
-              <h5><i class="fa-solid fa-feather-pointed" style="color: var(--accent-cyan);"></i> Endings that stayed</h5>
-              <p>Code Geass, Attack on Titan, Naruto, and Dororo all left permanent residue.</p>
-            </div>
-          </div>
-        </div>
+          <p class="otaku-note">A few picks deserve to be stated plainly because they never left the system.</p>
+          <div class="visual-poster-grid" data-render="favorites-posters"></div>
+          <div class="otaku-list" data-render="favorites-notes"></div>
+        </section>
 
-        <div class="otaku-card glass-panel" style="justify-content: space-between;">
+        <!-- ── Death Note (modules/death-note.js) ────────────────────────── -->
+        <section class="otaku-card glass-panel" id="death-note" aria-labelledby="dn-title">
+          <div class="otaku-header">
+            <h3 id="dn-title"><i class="fa-solid fa-book-skull" aria-hidden="true"></i> Death Note</h3>
+            <span class="otaku-badge dn-badge">Shinigami Property</span>
+          </div>
+          <div class="dn-book">
+            <div class="dn-cover" aria-hidden="true"><span>DEATH NOTE</span></div>
+            <div class="dn-page">
+              <p class="dn-heading">HOW TO USE IT</p>
+              <ol class="dn-rules">
+                <li>The human whose name is written in this note shall die.</li>
+                <li>This note will not take effect unless the writer can see the subject: the name must appear somewhere on this page.</li>
+                <li>If no cause is chosen, the subject simply dies of a heart attack, forty seconds after writing.</li>
+                <li>The dead return on reload, or when their page is torn out.</li>
+              </ol>
+              <form class="dn-form" data-dn-form autocomplete="off">
+                <label class="sr-only" for="dn-name">Name</label>
+                <input id="dn-name" type="text" spellcheck="false" placeholder="Write a name you can see…">
+                <label class="sr-only" for="dn-cause">Cause of death</label>
+                <select id="dn-cause">
+                  <option>Heart attack</option>
+                  <option>Accident</option>
+                  <option>Watching a VF dub</option>
+                  <option>Spoilers</option>
+                  <option>Excessive plot armor failure</option>
+                </select>
+                <button class="arcade-btn arcade-btn--primary dn-write" type="submit"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i> Write</button>
+              </form>
+              <p class="dn-response" data-dn-response aria-live="polite"></p>
+              <ul class="dn-entries" data-dn-entries></ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Currently Locked In (data/manhwa.js → manhwa-tracker.js) ──── -->
+        <section class="otaku-card otaku-card-wide glass-panel" id="locked-in">
           <div class="otaku-header">
             <h3>Currently Locked In</h3>
-            <span class="otaku-badge"
-              style="background: linear-gradient(135deg, #8b5cf6, var(--accent-pink));">Asura Archives</span>
+            <span class="otaku-badge" style="background: linear-gradient(135deg, #8b5cf6, var(--accent-pink));">Asura Archives</span>
           </div>
           <p class="otaku-note">
             This is where the manga and manhwa side stops pretending to be a side quest.
+            <span class="manhwa-summary" data-manhwa-summary></span>
           </p>
           <div class="shot-grid">
             <div class="shot-card">
-              <img src="file:///C:/Users/wambo/OneDrive/Images/Screenshots/Screenshot%202026-05-12%20214848.png"
+              <img src="assets/otaku/manhwa/archive-feed-1.png"
+                onerror="this.onerror=null; this.src='assets/otaku/placeholders/manhwa-placeholder.svg';"
                 alt="Currently locked in manhwa shelf screenshot one">
               <span>Archive Feed I</span>
             </div>
             <div class="shot-card">
-              <img src="file:///C:/Users/wambo/OneDrive/Images/Screenshots/Screenshot%202026-05-12%20214818.png"
+              <img src="assets/otaku/manhwa/archive-feed-2.png"
+                onerror="this.onerror=null; this.src='assets/otaku/placeholders/manhwa-placeholder.svg';"
                 alt="Currently locked in manhwa shelf screenshot two">
               <span>Archive Feed II</span>
             </div>
           </div>
-          <div class="manhwa-grid">
-            <div class="manhwa-card">
-              <span class="manhwa-chip"><i class="fa-solid fa-circle" style="font-size: 0.5rem; color: var(--accent-cyan);"></i> Locked In</span>
-              <h5>Pick Me Up, Infinite Gacha</h5>
-              <p>High-pressure progression and exactly the kind of survive-smarter energy that stays addictive.</p>
-            </div>
-            <div class="manhwa-card">
-              <span class="manhwa-chip"><i class="fa-solid fa-circle" style="font-size: 0.5rem; color: var(--accent-cyan);"></i> Locked In</span>
-              <h5>Bad Born Blood</h5>
-              <p>Sharp aesthetic, pressure-heavy tone, and enough edge to qualify for dossier status.</p>
-            </div>
-            <div class="manhwa-card">
-              <span class="manhwa-chip"><i class="fa-solid fa-circle" style="font-size: 0.5rem; color: var(--accent-cyan);"></i> Locked In</span>
-              <h5>Infinite Mage</h5>
-              <p>Clean fantasy climb with magic progression that knows how to keep the pages moving.</p>
-            </div>
-            <div class="manhwa-card">
-              <span class="manhwa-chip"><i class="fa-solid fa-circle" style="font-size: 0.5rem; color: var(--accent-cyan);"></i> Locked In</span>
-              <h5>Swordmaster's Youngest Son</h5>
-              <p>Prestige family chaos, talent flexing, and the right amount of elegant violence.</p>
-            </div>
-            <div class="manhwa-card">
-              <span class="manhwa-chip"><i class="fa-solid fa-circle" style="font-size: 0.5rem; color: var(--accent-cyan);"></i> Locked In</span>
-              <h5>Star-Embracing Swordmaster</h5>
-              <p>Cold visuals, heavy atmosphere, and a title that already sounds like it belongs on a throne.</p>
-            </div>
-            <div class="manhwa-card">
-              <span class="manhwa-chip"><i class="fa-solid fa-circle" style="font-size: 0.5rem; color: var(--accent-cyan);"></i> Locked In</span>
-              <h5>Eternally Regressing Knight</h5>
-              <p>Regression stories work best when the pain and growth both show up, and this one understands that.</p>
-            </div>
-            <div class="manhwa-card">
-              <span class="manhwa-chip"><i class="fa-solid fa-circle" style="font-size: 0.5rem; color: var(--accent-cyan);"></i> Locked In</span>
-              <h5>The Shepherd Wizard</h5>
-              <p>A strong fantasy lane with visuals and title energy that make it easy to keep following.</p>
-            </div>
-            <div class="manhwa-card">
-              <span class="manhwa-chip"><i class="fa-solid fa-circle" style="font-size: 0.5rem; color: var(--accent-cyan);"></i> Locked In</span>
-              <h5>The Return of the Mount Hua Sect</h5>
-              <p>Style, comedy, pressure, and enough dominance to stay permanently in rotation.</p>
-            </div>
-          </div>
-        </div>
+          <div class="manhwa-grid manhwa-grid--tracked" data-render="manhwa"></div>
+        </section>
 
-        <div class="otaku-card otaku-card-wide glass-panel" style="justify-content: space-between;">
+        <!-- ── Immersion Deck (data/tracks.js → spotify-deck.js) ─────────── -->
+        <section class="otaku-card otaku-card-wide glass-panel" id="immersion-deck">
           <div class="otaku-header">
             <h3>Late-Night Anime Immersion Deck</h3>
-            <span class="otaku-badge"
-              style="background: linear-gradient(135deg, var(--accent-moon), var(--accent-indigo));">Spotify Ritual</span>
+            <span class="otaku-badge" style="background: linear-gradient(135deg, var(--accent-moon), var(--accent-indigo));">Spotify Ritual</span>
           </div>
           <p class="otaku-note">
-            One player. Four chosen tracks. Press the one that matches the current arc and let the room answer for it.
+            One player. Six chosen tracks. Press the one that matches the current arc and let the room answer for it.
           </p>
           <div class="music-deck">
             <div class="spotify-shell">
               <iframe id="spotify-deck-player"
-                src="https://open.spotify.com/embed/track/7elSn9tGQTOgVghLzJN1yX?utm_source=generator&theme=0"
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy" title="Spotify late-night anime immersion deck"></iframe>
             </div>
-            <div class="track-selector" id="spotify-track-selector">
-              <button class="track-button is-active" type="button" data-track-id="7elSn9tGQTOgVghLzJN1yX">
-                <strong>Lacrimosa</strong>
-                <span>When the page needs cathedral-level tension.</span>
-              </button>
-              <button class="track-button" type="button" data-track-id="0FIXr1tM8cbezZPWEnFbga">
-                <strong>Wind</strong>
-                <span>For the reflective ending-credit state of mind.</span>
-              </button>
-              <button class="track-button" type="button" data-track-id="3KhwEuqLNjHfsKaBDo1yVh">
-                <strong>Boku no Sensou</strong>
-                <span>Controlled chaos with enough impact to wake the whole arc up.</span>
-              </button>
-              <button class="track-button" type="button" data-track-id="68Ho40jB1sbCKoZRzLtLUj">
-                <strong>Sand Dream</strong>
-                <span>The late-night, half-melancholic, half-dangerous lane.</span>
-              </button>
-              <div class="spotify-link-row">
-                <a href="https://open.spotify.com/track/7elSn9tGQTOgVghLzJN1yX?si=JGsyaSe6Qc6QcwhknQ3ZVQ" target="_blank" rel="noreferrer">
-                  <i class="fa-brands fa-spotify"></i> Lacrimosa
-                </a>
-                <a href="https://open.spotify.com/track/0FIXr1tM8cbezZPWEnFbga" target="_blank" rel="noreferrer">
-                  <i class="fa-brands fa-spotify"></i> Wind
-                </a>
-                <a href="https://open.spotify.com/track/3KhwEuqLNjHfsKaBDo1yVh?si=27G3j8p3SwaOZbrSeR4aFw" target="_blank" rel="noreferrer">
-                  <i class="fa-brands fa-spotify"></i> Boku no Sensou
-                </a>
-                <a href="https://open.spotify.com/track/68Ho40jB1sbCKoZRzLtLUj?si=7Lqm-1HlThGILoB9txChIA" target="_blank" rel="noreferrer">
-                  <i class="fa-brands fa-spotify"></i> Sand Dream
-                </a>
-              </div>
-            </div>
+            <div class="track-selector" id="spotify-track-selector"></div>
           </div>
-        </div>
+        </section>
 
-        <div class="otaku-card otaku-card-wide glass-panel" style="justify-content: space-between;">
+        <!-- ── Throne Speeches (data/speeches.js → render-speeches.js) ───── -->
+        <section class="otaku-card otaku-card-wide glass-panel" id="throne-speeches">
           <div class="otaku-header">
             <h3>Throne Speeches</h3>
-            <span class="otaku-badge"
-              style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-indigo));">Villain Broadcasts</span>
+            <span class="otaku-badge" style="background: linear-gradient(135deg, var(--accent-pink), var(--accent-indigo));">Ideological & Throne Proclamations</span>
+          </div>
+          <p class="otaku-note">Five iconic figures. Five proclamations. No soft energy anywhere in sight.</p>
+          <div class="speech-stack" data-render="speeches"></div>
+        </section>
+
+        <!-- ── Tier List Forge (modules/tier-list.js) ─────────────────────── -->
+        <section class="otaku-card otaku-card-wide glass-panel" id="tier-forge" aria-labelledby="tier-title">
+          <div class="otaku-header">
+            <h3 id="tier-title"><i class="fa-solid fa-ranking-star" style="color: var(--saiyan-gold);" aria-hidden="true"></i> Tier List Forge</h3>
+            <span class="otaku-badge" style="background: linear-gradient(135deg, #ff4d6d, #ffd166);">Your Verdict</span>
+          </div>
+          <p class="otaku-note">Every title in this dossier, yours to judge. The forge remembers your verdict.</p>
+          <div class="tier-forge" data-tier-forge data-owns-keys>
+            <div class="tier-toolbar">
+              <button class="arcade-btn" type="button" data-tier-canon><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Dossier canon</button>
+              <button class="arcade-btn" type="button" data-tier-clear><i class="fa-solid fa-broom" aria-hidden="true"></i> Clear</button>
+              <button class="arcade-btn arcade-btn--primary" type="button" data-tier-export><i class="fa-solid fa-image" aria-hidden="true"></i> Export PNG</button>
+            </div>
+            <p class="arcade-hint" data-tier-hint aria-live="polite"></p>
+            <div class="tier-rows" data-tier-rows></div>
+            <div class="tier-pool-wrap">
+              <span class="tier-pool-label">Unranked</span>
+              <div class="tier-pool" data-tier-pool aria-label="Unranked titles"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Summon Gate (data/characters.js → summon-gate.js) ─────────── -->
+        <section class="otaku-card otaku-card-wide glass-panel" id="summon-gate" aria-labelledby="summon-title">
+          <div class="otaku-header">
+            <h3 id="summon-title"><i class="fa-solid fa-dungeon" style="color: var(--saiyan-gold);" aria-hidden="true"></i> Summon Gate</h3>
+            <span class="otaku-badge" style="background: linear-gradient(135deg, #f59e0b, #d946ef);">Villain Arc Banner</span>
+          </div>
+          <p class="otaku-note">A gacha with no wallet attached. Tickets are earned, never bought: that is the whole joke.</p>
+          <div class="summon" data-summon>
+            <div class="summon-banner">
+              <div class="summon-art" data-summon-art aria-hidden="true"></div>
+              <div class="summon-copy">
+                <strong class="summon-title">Villain Arc Banner</strong>
+                <ul class="summon-rates">
+                  <li class="rate rate--ssr">SSR <b>3%</b></li>
+                  <li class="rate rate--sr">SR <b>17%</b></li>
+                  <li class="rate rate--r">R <b>80%</b></li>
+                </ul>
+                <p class="summon-pity" data-summon-pity></p>
+                <div class="summon-tickets"><i class="fa-solid fa-ticket" aria-hidden="true"></i> <strong data-summon-tickets>0</strong> tickets</div>
+                <div class="summon-actions">
+                  <button class="arcade-btn arcade-btn--primary" type="button" data-summon-one><i class="fa-solid fa-star" aria-hidden="true"></i> Summon ×1</button>
+                  <button class="arcade-btn" type="button" data-summon-ten><i class="fa-solid fa-star" aria-hidden="true"></i> Summon ×10</button>
+                </div>
+                <p class="arcade-hint">Tickets: 1 free per day · every new secret · arcade victories (max 3 per day).</p>
+              </div>
+            </div>
+            <div class="summon-results" data-summon-results aria-live="polite"></div>
+            <div class="summon-binder">
+              <div class="summon-binder-head">
+                <h4><i class="fa-solid fa-book-open" aria-hidden="true"></i> Collection Binder <span data-binder-count></span></h4>
+                <div class="binder-filters" role="group" aria-label="Filter by rarity">
+                  <button type="button" class="binder-filter" data-binder-filter="all" aria-pressed="true">All</button>
+                  <button type="button" class="binder-filter" data-binder-filter="SSR" aria-pressed="false">SSR</button>
+                  <button type="button" class="binder-filter" data-binder-filter="SR" aria-pressed="false">SR</button>
+                  <button type="button" class="binder-filter" data-binder-filter="R" aria-pressed="false">R</button>
+                </div>
+              </div>
+              <div class="binder-grid" data-binder></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Otaku Arcade: cabinets wired by otaku/js/modules/{arcade-tabs,game-2048,game-memory-seal,game-sky-barrage,game-spiral-drill,alchemy-terminal}.js -->
+        <section class="otaku-card otaku-card-wide glass-panel" id="otaku-arcade" aria-labelledby="arcade-title">
+          <div class="otaku-header">
+            <h3 id="arcade-title"><i class="fa-solid fa-gamepad" style="color: var(--accent-pink);" aria-hidden="true"></i> Otaku Arcade & Tactical Simulation Deck</h3>
+            <span class="otaku-badge" style="background: linear-gradient(135deg, var(--accent-orange), var(--accent-pink));">Now Playable</span>
           </div>
           <p class="otaku-note">
-            Three characters. Three speeches. No soft energy anywhere in sight.
+            Five cabinets, zero quarters. Progress, records and saved runs stay in this browser.
           </p>
-          <div class="speech-stack">
-            <div class="speech-entry">
-              <div class="speech-portrait">
-                <img
-                  src="https://static.wikia.nocookie.net/villains/images/9/9b/Code_Geass_Lelouch_Lamperouge.png/revision/latest?cb=20230308204404"
-                  alt="Lelouch vi Britannia portrait">
+
+          <div class="arcade-tabs" role="tablist" aria-label="Arcade cabinets">
+            <button class="arcade-tab" type="button" role="tab" id="tab-2048" aria-controls="panel-2048" aria-selected="true">
+              <i class="fa-solid fa-cubes" style="color: var(--accent-cyan);" aria-hidden="true"></i> 2048: Evolution of Power
+            </button>
+            <button class="arcade-tab" type="button" role="tab" id="tab-seal" aria-controls="panel-seal" aria-selected="false" tabindex="-1">
+              <i class="fa-solid fa-eye" style="color: var(--sharingan-red);" aria-hidden="true"></i> Sharingan Memory Seal
+            </button>
+            <button class="arcade-tab" type="button" role="tab" id="tab-terminal" aria-controls="panel-terminal" aria-selected="false" tabindex="-1">
+              <i class="fa-solid fa-atom" style="color: var(--saiyan-gold);" aria-hidden="true"></i> Alchemy Terminal
+            </button>
+            <button class="arcade-tab" type="button" role="tab" id="tab-sky" aria-controls="panel-sky" aria-selected="false" tabindex="-1">
+              <i class="fa-solid fa-crosshairs" style="color: #38bdf8;" aria-hidden="true"></i> Tanya: Sky Barrage
+            </button>
+            <button class="arcade-tab" type="button" role="tab" id="tab-spiral" aria-controls="panel-spiral" aria-selected="false" tabindex="-1">
+              <i class="fa-solid fa-hurricane" style="color: #f97316;" aria-hidden="true"></i> Gurren Lagann: Spiral Drill
+            </button>
+          </div>
+
+          <!-- Cabinet 1: 2048 -->
+          <div class="arcade-panel" role="tabpanel" id="panel-2048" aria-labelledby="tab-2048">
+            <div class="g2048" data-game="2048" data-sfx-silent>
+              <div class="g2048-board" tabindex="0" data-owns-keys role="application"
+                aria-label="2048 board. Use the arrow keys or W A S D, or swipe, to merge ranks.">
+                <div class="g2048-cells" aria-hidden="true"></div>
+                <div class="g2048-tiles" aria-hidden="true"></div>
+                <div class="g2048-message" hidden>
+                  <strong></strong>
+                  <p></p>
+                  <div class="g2048-message-actions"></div>
+                </div>
               </div>
-              <div class="speech-copy">
-                <h4><i class="fa-solid fa-chess-king" style="color: var(--accent-pink);"></i> Lelouch vi Britannia</h4>
-                <p>Supreme authority transmission</p>
-                <blockquote>Attention, entire world! Hear my proclamation!
-I am Lelouch vi Britannia, Emperor of the Holy Britannian Empire and your only ruler!
-Schneizel has surrendered to me. As a result of this, I am now in control of both the Damocles and the F.L.E.I.J.A. weapons. And even the Black Knights no longer possess the strength to oppose me now.
-If anyone dares to resist my supreme authority, they shall know the devastating power of the F.L.E.I.J.A.s. Those who could challenge my military rule no longer exist!
-Yes. From this day, from this moment forward, the world belongs to me.
-Lelouch vi Britannia commands you! Obey me, subjects! Obey me, world!</blockquote>
-              </div>
-            </div>
-            <div class="speech-entry">
-              <div class="speech-portrait">
-                <img
-                  src="https://static.wikia.nocookie.net/saga-of-evil-tanya/images/0/0d/Tanya_Profile1.png/revision/latest?cb=20170128075936"
-                  alt="Tanya Degurechaff portrait">
-              </div>
-              <div class="speech-copy">
-                <h4><i class="fa-solid fa-crosshairs" style="color: var(--accent-orange);"></i> Tanya Degurechaff</h4>
-                <p>Anti-divine battlefield memorandum</p>
-                <blockquote>If there is a God who rules this world, it is a stern, solemn, and infinitely good being. A being that is far too great for us.
-God keeps forcing us to confront these cruel fates, as if those were the rules of this world.
-Thus, I declare before you all, so you've no doubts about where I stand...
-Oh, dearest Lord... I'm going to slice you into tiny chunks of flesh and feed you to the dogs!
-Our battlefield is no place for that piece of shit, God!
-I think it's time we took over God's glorious work ourselves. We soldiers are going to take His place! We're going to put that arrogant asshole out of a job!
-Do you understand me, men?! ARE ALL OF YOU WITH ME?!
-Let's make peace with our Maker! It's time for us to go to war!</blockquote>
-              </div>
-            </div>
-            <div class="speech-entry">
-              <div class="speech-portrait">
-                <img
-                  src="https://static.wikia.nocookie.net/otaku_world_minecraft_mod/images/2/28/Madara_Uchiha.png/revision/latest?cb=20220709014005"
-                  alt="Madara Uchiha portrait">
-              </div>
-              <div class="speech-copy">
-                <h4><i class="fa-solid fa-eye" style="color: var(--accent-indigo);"></i> Madara Uchiha</h4>
-                <p>Reality correction notice</p>
-                <blockquote>Wake up to reality!
-Nothing ever goes as planned in this accursed world.
-The longer you live, the more you realize that the only things that truly exist in this reality are merely pain, suffering, and futility.
-Listen...
-Everywhere you look in this world, wherever there is light, there will always be shadows to be found as well.
-As long as there is a concept of victors, the vanquished will also exist.
-The selfish desire for peace initiates wars, and hatred is born in order to protect love.
-There are nexuses of causal relationships that cannot be separated.
-I want to sever the fate of this world...
-A world of only victors. A world of only peace. A world of only love.
-I will create such a world.
-I am... the ghost of the Uchiha.</blockquote>
+
+              <div class="g2048-side">
+                <div class="arcade-stats">
+                  <div class="arcade-stat"><span>Score</span><strong data-2048-score>0</strong></div>
+                  <div class="arcade-stat"><span>Best</span><strong data-2048-best>0</strong></div>
+                  <div class="arcade-stat"><span>Rank</span><strong data-2048-rank>—</strong></div>
+                </div>
+                <div class="g2048-controls">
+                  <button class="arcade-btn arcade-btn--primary" type="button" data-2048-new>
+                    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i> New game
+                  </button>
+                  <button class="arcade-btn" type="button" data-2048-undo title="Undo your last move (3 per game)">
+                    <i class="fa-solid fa-clock-rotate-left" aria-hidden="true"></i> <span>Izanagi (<span data-2048-izanagi>3</span>)</span>
+                  </button>
+                </div>
+                <p class="arcade-hint">Click the board, then <kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd> or
+                  <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>. Swipe on touch. Merge two equal ranks to evolve.</p>
+                <ol class="g2048-ladder" aria-label="Rank ladder"></ol>
               </div>
             </div>
           </div>
-        </div>
+
+          <!-- Cabinet 2: Sharingan Memory Seal -->
+          <div class="arcade-panel" role="tabpanel" id="panel-seal" aria-labelledby="tab-seal" hidden>
+            <div class="seal" data-game="seal" data-sfx-silent>
+              <div class="seal-toolbar">
+                <div class="seal-levels" role="radiogroup" aria-label="Difficulty">
+                  <button class="seal-level" type="button" role="radio" aria-checked="true" data-level="1">
+                    <span class="tomoe" aria-hidden="true"><i></i></span> 1 Tomoe
+                  </button>
+                  <button class="seal-level" type="button" role="radio" aria-checked="false" data-level="2">
+                    <span class="tomoe" aria-hidden="true"><i></i><i></i></span> 2 Tomoe
+                  </button>
+                  <button class="seal-level" type="button" role="radio" aria-checked="false" data-level="3">
+                    <span class="tomoe" aria-hidden="true"><i></i><i></i><i></i></span> Mangekyō
+                  </button>
+                </div>
+                <button class="arcade-btn arcade-btn--primary" type="button" data-seal-start>
+                  <i class="fa-solid fa-eye" aria-hidden="true"></i> Break the seal
+                </button>
+              </div>
+              <div class="arcade-stats">
+                <div class="arcade-stat"><span>Time</span><strong data-seal-time>0.0s</strong></div>
+                <div class="arcade-stat"><span>Moves</span><strong data-seal-moves>0</strong></div>
+                <div class="arcade-stat"><span>Combo</span><strong data-seal-combo>x1</strong></div>
+                <div class="arcade-stat"><span>Score</span><strong data-seal-score>0</strong></div>
+                <div class="arcade-stat"><span>Best time</span><strong data-seal-best>—</strong></div>
+              </div>
+              <p class="seal-status" data-seal-status aria-live="polite">Pick a tomoe level, then break the seal. The cards
+                show themselves once — memorize fast.</p>
+              <div class="seal-grid" data-seal-grid></div>
+            </div>
+          </div>
+
+          <!-- Cabinet 3: Alchemy Terminal -->
+          <div class="arcade-panel" role="tabpanel" id="panel-terminal" aria-labelledby="tab-terminal" hidden>
+            <div class="terminal" data-terminal data-sfx-silent>
+              <div class="terminal-bar" aria-hidden="true"><i></i><i></i><i></i><span>alchemist@amestris — state-terminal</span></div>
+              <div class="terminal-log" role="log" aria-live="polite" aria-label="Terminal output"></div>
+              <form class="terminal-input-row" autocomplete="off">
+                <label class="terminal-prompt" for="alchemy-input"><span class="prompt-host">alchemist@amestris:</span>~$</label>
+                <input id="alchemy-input" type="text" spellcheck="false" autocapitalize="off"
+                  placeholder="try: analyze 70" aria-label="Terminal command">
+              </form>
+            </div>
+          </div>
+<!-- Cabinet 4: Tanya — Sky Barrage -->
+          <div class="arcade-panel" role="tabpanel" id="panel-sky" aria-labelledby="tab-sky" hidden>
+            <div class="sky" data-game="sky" data-sfx-silent>
+              <div class="arcade-stats">
+                <div class="arcade-stat"><span>Score</span><strong data-sky-score>0</strong></div>
+                <div class="arcade-stat"><span>Best</span><strong data-sky-best>0</strong></div>
+                <div class="arcade-stat"><span>Wave</span><strong data-sky-wave>0 / 5</strong></div>
+                <div class="arcade-stat"><span>Lives</span><strong class="sky-lives" data-sky-lives>♥♥♥</strong></div>
+              </div>
+              <div class="sky-stage">
+                <canvas class="sky-canvas" width="800" height="450" tabindex="0" data-owns-keys
+                  aria-label="Sky Barrage battlefield. Arrow keys or W A S D to fly, or steer with the mouse or your finger. Space for Elinium overdrive. Escape pauses."></canvas>
+                <p class="sky-caption" aria-live="polite"></p>
+                <div class="sky-overlay">
+                  <span class="sky-kicker">Rhine Front · 1924</span>
+                  <strong>Sky Barrage</strong>
+                  <p>Five waves of Republic mages, then the one who calls himself God. Major Degurechaff does not pray.</p>
+                  <button class="arcade-btn arcade-btn--primary" type="button"><i class="fa-solid fa-plane-up" aria-hidden="true"></i> Take off</button>
+                </div>
+              </div>
+              <div class="sky-controls">
+                <div class="sky-gauge">
+                  <span>Elinium Type 95</span>
+                  <div class="sky-gauge-bar"><i data-sky-gauge></i></div>
+                </div>
+                <button class="arcade-btn" type="button" data-sky-special disabled><i class="fa-solid fa-burst" aria-hidden="true"></i> Overdrive <kbd>Space</kbd></button>
+              </div>
+              <p class="arcade-hint">Auto-fire is on. <kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd> / <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd>
+                or steer with mouse / finger. Kills charge the Elinium gauge. <kbd>Esc</kbd> pauses.</p>
+            </div>
+          </div>
+
+          <!-- Cabinet 5: Gurren Lagann — Spiral Drill -->
+          <div class="arcade-panel" role="tabpanel" id="panel-spiral" aria-labelledby="tab-spiral" hidden>
+            <div class="spiral" data-game="spiral" data-sfx-silent>
+              <div class="spiral-shaft" aria-hidden="true">
+                <ol class="spiral-layers"></ol>
+                <div class="spiral-drill"><i class="fa-solid fa-hurricane"></i></div>
+              </div>
+              <div class="spiral-main">
+                <div class="arcade-stats">
+                  <div class="arcade-stat"><span>Score</span><strong data-spiral-score>0</strong></div>
+                  <div class="arcade-stat"><span>Combo</span><strong data-spiral-combo>x0</strong></div>
+                  <div class="arcade-stat"><span>Spirit</span><strong class="spiral-spirit" data-spiral-spirit></strong></div>
+                  <div class="arcade-stat"><span>Best</span><strong data-spiral-best>0</strong></div>
+                </div>
+                <div class="spiral-layer-name" data-spiral-layer>Jeeha Village</div>
+                <p class="spiral-line" data-spiral-line aria-live="polite">Strike when the spiral needle hits the glowing zone. The bright core is a PERFECT.</p>
+                <div class="spiral-gauge" aria-hidden="true">
+                  <span class="spiral-zone"></span>
+                  <span class="spiral-sweet"></span>
+                  <span class="spiral-needle"></span>
+                </div>
+                <div class="spiral-progress" aria-hidden="true"><span data-spiral-progress></span></div>
+                <div class="spiral-actions">
+                  <button class="arcade-btn arcade-btn--primary spiral-drill-btn" type="button" data-spiral-drill disabled>
+                    <i class="fa-solid fa-hurricane" aria-hidden="true"></i> DRILL! <kbd>Space</kbd>
+                  </button>
+                  <button class="arcade-btn" type="button" data-spiral-start><i class="fa-solid fa-play" aria-hidden="true"></i> Start drilling</button>
+                </div>
+                <p class="arcade-hint">Seven layers from Jeeha Village to the Heavens. Misses cost fighting spirit, and Kamina can only save you once.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Secret Codex: rendered by otaku/js/modules/secret-codex.js -->
+        <section class="otaku-card otaku-card-wide glass-panel" id="secret-codex" aria-labelledby="codex-title">
+          <div class="otaku-header">
+            <h3 id="codex-title"><i class="fa-solid fa-scroll" style="color: var(--saiyan-gold);" aria-hidden="true"></i> Secret Codex</h3>
+            <span class="otaku-badge" style="background: linear-gradient(135deg, #8b5cf6, var(--saiyan-gold));" data-codex-count>0 / 9 found</span>
+          </div>
+          <p class="otaku-note">
+            This dossier hides things. Some are typed, some are hovered, some are earned in the arcade. Every discovery is
+            logged here — the hints are all you get.
+          </p>
+          <div class="codex-progress" role="progressbar" aria-label="Secrets found" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0">
+            <span data-codex-bar></span>
+          </div>
+          <ul class="codex-grid" data-codex-list></ul>
+          <div class="codex-actions">
+            <button class="arcade-btn codex-reset" type="button" data-codex-reset>
+              <i class="fa-solid fa-eraser" aria-hidden="true"></i> Wipe codex memory
+            </button>
+          </div>
+        </section>
 
       </div>
-    </div>
+    </main>
   </div>
+
+  <dialog class="help-dialog" id="help-dialog" aria-labelledby="help-title">
+    <header>
+      <h2 id="help-title"><i class="fa-solid fa-keyboard" style="color: var(--chakra-violet);" aria-hidden="true"></i> Command Scroll</h2>
+      <button class="help-close" type="button" data-close aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    </header>
+    <ul class="help-list" data-shortcut-list></ul>
+    <p class="help-footnote">Some commands aren't on this scroll. They're typed as words, anywhere on the page. The Secret
+      Codex has the hints. <kbd>Esc</kbd> ends any effect early.</p>
+  </dialog>
 
   <div class="pet-wrapper" id="ghost-pet-wrapper">
     <div class="pet-character idle" id="ghost-pet-char">
@@ -1131,119 +638,57 @@ I am... the ghost of the Uchiha.</blockquote>
     </div>
   </div>
 
-  <script>
-    (function () {
-      const player = document.getElementById('spotify-deck-player');
-      const buttons = Array.from(document.querySelectorAll('.track-button'));
+  <!-- Otaku runtime: core → data → engines → modules → boot (order matters) -->
+  <script src="otaku/js/core/otaku.js"></script>
+  <script src="otaku/js/core/bus.js"></script>
+  <script src="otaku/js/core/store.js"></script>
+  <script src="otaku/js/core/data.js"></script>
+  <script src="otaku/js/core/dom.js"></script>
+  <script src="otaku/js/core/sfx.js"></script>
+  <script src="otaku/js/core/input.js"></script>
+  <script src="otaku/js/core/toast.js"></script>
+  <script src="otaku/js/core/stage.js"></script>
 
-      if (!player || buttons.length === 0) return;
+  <script src="otaku/js/data/secrets.js"></script>
+  <script src="otaku/js/data/library.js"></script>
+  <script src="otaku/js/data/speeches.js"></script>
+  <script src="otaku/js/data/tracks.js"></script>
+  <script src="otaku/js/data/manhwa.js"></script>
+  <script src="otaku/js/data/ranks.js"></script>
+  <script src="otaku/js/data/characters.js"></script>
+  <script src="otaku/js/data/skins.js"></script>
 
-      buttons.forEach((button) => {
-        button.addEventListener('click', () => {
-          const trackId = button.getAttribute('data-track-id');
-          if (!trackId) return;
+  <script src="otaku/js/games/g2048-engine.js"></script>
+  <script src="otaku/js/games/sky-barrage-engine.js"></script>
+  <script src="otaku/js/games/spiral-engine.js"></script>
+  <script src="otaku/js/games/gacha-engine.js"></script>
 
-          player.src = `https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0`;
-          buttons.forEach((item) => item.classList.remove('is-active'));
-          button.classList.add('is-active');
-        });
-      });
-    })();
+  <!-- Renderers first: later modules look up the DOM they produce. -->
+  <script src="otaku/js/modules/render-library.js"></script>
+  <script src="otaku/js/modules/render-speeches.js"></script>
+  <script src="otaku/js/modules/manhwa-tracker.js"></script>
+  <script src="otaku/js/modules/spotify-deck.js"></script>
 
-    (function () {
-      const GHOST_W = 80;
-      const GHOST_H = 96;
-      const SPEED = 2.4;
-      const IDLE_MIN = 400;
-      const IDLE_MAX = 1000;
-      const TRAIL_INTERVAL = 55;
-      const TRAIL_DIST = 10;
-
-      const wrapper = document.getElementById('ghost-pet-wrapper');
-      const char = document.getElementById('ghost-pet-char');
-
-      let x = window.innerWidth / 2 - GHOST_W / 2;
-      let y = window.innerHeight / 2 - GHOST_H / 2;
-      let targetX = x;
-      let targetY = y;
-      let isIdle = true;
-      let idleTimer = null;
-      let lastTrailX = x;
-      let lastTrailY = y;
-      let lastTrailTime = 0;
-      let raf;
-
-      function clamp(v, min, max) {
-        return Math.max(min, Math.min(max, v));
-      }
-
-      function pickTarget() {
-        const margin = 20;
-        targetX = clamp(Math.random() * (window.innerWidth - GHOST_W), margin, window.innerWidth - GHOST_W - margin);
-        targetY = clamp(Math.random() * (window.innerHeight - GHOST_H), margin, window.innerHeight - GHOST_H - margin);
-        isIdle = false;
-        char.classList.remove('idle');
-      }
-
-      function scheduleNext() {
-        isIdle = true;
-        char.classList.add('idle');
-        const delay = IDLE_MIN + Math.random() * (IDLE_MAX - IDLE_MIN);
-        idleTimer = setTimeout(pickTarget, delay);
-      }
-
-      function dropTrail() {
-        const dot = document.createElement('div');
-        dot.className = 'paw-trail';
-        dot.style.left = (x + GHOST_W / 2) + 'px';
-        dot.style.top = (y + GHOST_H * 0.85) + 'px';
-        document.body.appendChild(dot);
-        dot.addEventListener('animationend', () => dot.remove(), { once: true });
-      }
-
-      function tick(now) {
-        const dx = targetX - x;
-        const dy = targetY - y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist > 2) {
-          const step = Math.min(SPEED, dist);
-          x += (dx / dist) * step;
-          y += (dy / dist) * step;
-
-          if (dx < -1) char.classList.add('flipped');
-          else if (dx > 1) char.classList.remove('flipped');
-
-          const td = Math.hypot(x - lastTrailX, y - lastTrailY);
-          if (td >= TRAIL_DIST && now - lastTrailTime > TRAIL_INTERVAL) {
-            dropTrail();
-            lastTrailX = x;
-            lastTrailY = y;
-            lastTrailTime = now;
-          }
-        } else if (!isIdle) {
-          x = targetX;
-          y = targetY;
-          scheduleNext();
-        }
-
-        wrapper.style.transform = `translate(${x}px, ${y}px)`;
-        raf = requestAnimationFrame(tick);
-      }
-
-      wrapper.style.transform = `translate(${x}px, ${y}px)`;
-      scheduleNext();
-      raf = requestAnimationFrame(tick);
-
-      window.addEventListener('resize', () => {
-        x = clamp(x, 0, window.innerWidth - GHOST_W);
-        y = clamp(y, 0, window.innerHeight - GHOST_H);
-        targetX = clamp(targetX, 0, window.innerWidth - GHOST_W);
-        targetY = clamp(targetY, 0, window.innerHeight - GHOST_H);
-      });
-    })();
-  </script>
-
+  <script src="otaku/js/modules/secret-codex.js"></script>
+  <script src="otaku/js/modules/command-dock.js"></script>
+  <script src="otaku/js/modules/faction-skins.js"></script>
+  <script src="otaku/js/modules/ghost-pet.js"></script>
+  <script src="otaku/js/modules/scouter.js"></script>
+  <script src="otaku/js/modules/fx-opening.js"></script>
+  <script src="otaku/js/modules/fx-domain-expansion.js"></script>
+  <script src="otaku/js/modules/fx-geass.js"></script>
+  <script src="otaku/js/modules/fx-zawarudo.js"></script>
+  <script src="otaku/js/modules/fx-super-saiyan.js"></script>
+  <script src="otaku/js/modules/death-note.js"></script>
+  <script src="otaku/js/modules/tier-list.js"></script>
+  <script src="otaku/js/modules/summon-gate.js"></script>
+  <script src="otaku/js/modules/arcade-tabs.js"></script>
+  <script src="otaku/js/modules/game-2048.js"></script>
+  <script src="otaku/js/modules/game-memory-seal.js"></script>
+  <script src="otaku/js/modules/game-sky-barrage.js"></script>
+  <script src="otaku/js/modules/game-spiral-drill.js"></script>
+  <script src="otaku/js/modules/alchemy-terminal.js"></script>
+  <script src="otaku/js/boot.js"></script>
 </body>
 
 </html>

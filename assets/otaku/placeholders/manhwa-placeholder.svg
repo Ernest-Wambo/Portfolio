@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="100%" height="100%">
+  <defs>
+    <linearGradient id="mbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="mgrid" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#ec4899" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="350" rx="16" fill="url(#mbg)" stroke="#374151" stroke-width="1.5"/>
+  <rect x="20" y="20" width="560" height="40" rx="8" fill="#1f2937" opacity="0.6"/>
+  <circle cx="45" cy="40" r="5" fill="#ef4444"/>
+  <circle cx="65" cy="40" r="5" fill="#f59e0b"/>
+  <circle cx="85" cy="40" r="5" fill="#10b981"/>
+  <text x="300" y="44" text-anchor="middle" fill="#9ca3af" font-family="system-ui, sans-serif" font-size="11" letter-spacing="1">ARCHIVE FEED SHELF SCREENSHOT</text>
+  
+  <g transform="translate(40, 85)">
+    <rect x="0" y="0" width="90" height="130" rx="6" fill="#1e293b" stroke="#475569" stroke-dasharray="4,4"/>
+    <text x="45" y="70" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">SLOT 1</text>
+  </g>
+  <g transform="translate(145, 85)">
+    <rect x="0" y="0" width="90" height="130" rx="6" fill="#1e293b" stroke="#475569" stroke-dasharray="4,4"/>
+    <text x="45" y="70" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">SLOT 2</text>
+  </g>
+  <g transform="translate(250, 85)">
+    <rect x="0" y="0" width="90" height="130" rx="6" fill="#1e293b" stroke="#475569" stroke-dasharray="4,4"/>
+    <text x="45" y="70" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">SLOT 3</text>
+  </g>
+  <g transform="translate(355, 85)">
+    <rect x="0" y="0" width="90" height="130" rx="6" fill="#1e293b" stroke="#475569" stroke-dasharray="4,4"/>
+    <text x="45" y="70" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">SLOT 4</text>
+  </g>
+  <g transform="translate(460, 85)">
+    <rect x="0" y="0" width="90" height="130" rx="6" fill="#1e293b" stroke="#475569" stroke-dasharray="4,4"/>
+    <text x="45" y="70" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">SLOT 5</text>
+  </g>
+  <rect x="30" y="240" width="540" height="10" rx="4" fill="url(#mgrid)"/>
+  <text x="300" y="295" text-anchor="middle" fill="#c084fc" font-family="system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="1.5">DROP YOUR MANHWA / WEBTOON SCREENSHOT HERE</text>
+  <text x="300" y="318" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">Target path: assets/otaku/manhwa/archive-feed-1.png</text>
+</svg>

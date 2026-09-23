@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="24" fill="url(#bg)" stroke="url(#glow)" stroke-width="2" stroke-opacity="0.6"/>
+  <circle cx="100" cy="75" r="32" fill="#8b5cf6" opacity="0.25" stroke="#a78bfa" stroke-width="2"/>
+  <path d="M55 160 C55 120 75 110 100 110 C125 110 145 120 145 160 Z" fill="#8b5cf6" opacity="0.25" stroke="#a78bfa" stroke-width="2"/>
+  <path d="M100 60 L104 70 L114 74 L104 78 L100 88 L96 78 L86 74 L96 70 Z" fill="#f43f5e" opacity="0.9"/>
+  <text x="100" y="180" text-anchor="middle" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10" letter-spacing="1">DROP PORTRAIT HERE</text>
+</svg>

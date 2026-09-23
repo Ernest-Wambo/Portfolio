@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><defs><linearGradient id="hat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ef4444"/><stop offset="1" stop-color="#991b1b"/></linearGradient></defs>
+    <path d="M18 64 Q14 84 22 94 L32 94 Q26 80 30 66 Z M82 64 Q86 84 78 94 L68 94 Q74 80 70 66 Z" fill="#f8fafc" opacity=".9"/>
+    <path d="M6 66 L50 14 L94 66 Q50 78 6 66 Z" fill="url(#hat)" stroke="#7f1d1d" stroke-width="1.5"/>
+    <path d="M6 66 Q50 78 94 66" stroke="#f8fafc" stroke-width="4" fill="none"/>
+    <path d="M50 30 L66 50 L50 68 L34 50 Z" fill="#f8fafc" stroke="#7f1d1d" stroke-width="1.5"/>
+    <text x="50" y="57" text-anchor="middle" font-size="19" font-weight="700" fill="#b91c1c" font-family="'Yu Gothic','Meiryo','MS Gothic','Noto Sans JP',sans-serif">影</text></svg>

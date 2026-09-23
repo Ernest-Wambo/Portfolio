@@ -1,0 +1,820 @@
+/* ==========================================================================
+   OTAKU ZONE — EFFECTS LAYER
+   Toasts, ghost bubble, scouter HUD, cinematic overlays (Domain Expansion,
+   Geass, Za Warudo, Super Saiyan), page-state classes, help dialog.
+   ========================================================================== */
+
+/* ── Toasts ────────────────────────────────────────────────────────────── */
+.toast-stack {
+  position: fixed;
+  left: 1.25rem;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: min(360px, calc(100vw - 2.5rem));
+  pointer-events: none;
+}
+
+.toast {
+  --toast: var(--chakra-violet);
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  background: rgba(10, 14, 26, 0.94);
+  border: 1px solid color-mix(in srgb, var(--toast) 45%, transparent);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.7), 0 0 24px -6px color-mix(in srgb, var(--toast) 45%, transparent);
+  backdrop-filter: blur(10px);
+  color: var(--text-main);
+  font-size: 0.86rem;
+  /* Click-through: a toast must never block a card or game cell underneath. */
+  pointer-events: none;
+  animation: toastIn 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.is-leaving { animation: toastOut 300ms ease-in forwards; }
+.toast i { color: var(--toast); margin-top: 0.2rem; }
+.toast strong { display: block; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--toast); }
+
+.toast--gold { --toast: var(--saiyan-gold); }
+.toast--red { --toast: var(--sharingan-red); }
+.toast--green { --toast: var(--scouter-green); }
+.toast--cyan { --toast: var(--accent-cyan); }
+
+@keyframes toastIn { from { opacity: 0; transform: translateX(-20px) scale(0.96); } }
+@keyframes toastOut { to { opacity: 0; transform: translateX(-20px); } }
+
+/* ── Ghost speech bubble ───────────────────────────────────────────────── */
+.ghost-bubble {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: calc(var(--z-pet) + 1);
+  max-width: 220px;
+  padding: 0.45rem 0.8rem;
+  border-radius: 12px;
+  background: rgba(245, 243, 255, 0.96);
+  color: #2e1065;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: 0 8px 22px -6px rgba(124, 58, 237, 0.6);
+}
+
+.ghost-bubble.is-visible { animation: bubblePop 2.6s ease forwards; }
+
+@keyframes bubblePop {
+  0% { opacity: 0; scale: 0.8; }
+  8%, 85% { opacity: 1; scale: 1; }
+  100% { opacity: 0; scale: 0.95; }
+}
+
+.pet-character.is-frozen,
+.pet-character.is-frozen .pet-body { animation-play-state: paused !important; }
+
+/* ── Scouter HUD ───────────────────────────────────────────────────────── */
+.scouter-on [data-power-level] { cursor: crosshair; }
+
+.scouter-on [data-power-level]:hover {
+  outline: 1px dashed rgba(74, 222, 128, 0.55);
+  outline-offset: 4px;
+}
+
+.scouter-hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-hud);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.scouter-hud.is-visible { opacity: 1; }
+
+.scouter-lens {
+  position: relative;
+  display: grid;
+  gap: 0.05rem;
+  width: 230px;
+  padding: 0.8rem 1rem 0.9rem;
+  overflow: hidden;
+  border-radius: 6px 26px 6px 26px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.28), rgba(22, 101, 52, 0.42));
+  border: 1px solid rgba(74, 222, 128, 0.75);
+  box-shadow: 0 0 30px rgba(74, 222, 128, 0.35), inset 0 0 30px rgba(74, 222, 128, 0.2);
+  backdrop-filter: blur(3px) saturate(1.4);
+  color: #dcfce7;
+  font-family: var(--font-mono);
+  text-shadow: 0 0 6px rgba(74, 222, 128, 0.8);
+}
+
+.scouter-scan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.14) 0 2px, transparent 2px 4px);
+  pointer-events: none;
+}
+
+.scouter-scan::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(180deg, transparent, rgba(134, 239, 172, 0.25), transparent);
+  animation: scouterSweep 1.3s linear infinite;
+}
+
+@keyframes scouterSweep {
+  from { top: -30%; }
+  to { top: 100%; }
+}
+
+.scouter-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.scouter-name {
+  font-size: 0.85rem;
+  margin-bottom: 0.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scouter-class {
+  font-size: 0.65rem;
+  opacity: 0.85;
+  margin-bottom: 0.35rem;
+}
+
+.scouter-class:empty { display: none; }
+
+.scouter-value {
+  font-size: 1.35rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.scouter-crack {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scouter-crack path {
+  fill: none;
+  stroke: #f0fdf4;
+  stroke-width: 1.6;
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  filter: drop-shadow(0 0 2px #fff);
+}
+
+.scouter-hud.is-overloaded .scouter-lens {
+  animation: scouterOverload 450ms steps(2) 3;
+  border-color: #fecaca;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.4), rgba(127, 29, 29, 0.55));
+  color: #fff1f2;
+  text-shadow: 0 0 8px rgba(248, 113, 113, 0.9);
+}
+
+.scouter-hud.is-overloaded .scouter-value { font-size: 1.05rem; }
+.scouter-hud.is-overloaded .scouter-crack { opacity: 1; }
+.scouter-hud.is-overloaded .scouter-crack path { animation: crackDraw 260ms ease-out forwards; }
+
+@keyframes crackDraw { to { stroke-dashoffset: 0; } }
+
+@keyframes scouterOverload {
+  0% { translate: 0 0; }
+  50% { translate: 3px -2px; }
+  100% { translate: -3px 2px; }
+}
+
+.is-shaking body { animation: pageShake 500ms ease-in-out; }
+
+@keyframes pageShake {
+  0%, 100% { translate: 0 0; }
+  20% { translate: -8px 3px; }
+  40% { translate: 7px -4px; }
+  60% { translate: -5px 2px; }
+  80% { translate: 3px -1px; }
+}
+
+/* ── Overlay base (see core/stage.js) ──────────────────────────────────── */
+.fx-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 450ms ease;
+  cursor: pointer;
+}
+
+.fx-overlay.is-active { opacity: 1; }
+.fx-overlay.is-leaving { opacity: 0; transition-duration: 550ms; }
+
+/* Freeze everything on the page while a time-stop effect runs. */
+.is-frozen .otaku-page-wrapper *,
+.is-frozen .otaku-page-wrapper *::before,
+.is-frozen .otaku-page-wrapper *::after { animation-play-state: paused !important; }
+
+.is-frozen .glass-panel:hover { transform: none; }
+
+/* ── Domain Expansion ──────────────────────────────────────────────────── */
+.fx-domain { background: #02030c; }
+
+.fx-domain-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fx-domain-title {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.3rem;
+  text-align: center;
+  padding: 1rem;
+  animation: domainTitle 4.2s ease-out forwards;
+}
+
+.fx-kanji {
+  font-size: clamp(2.8rem, 11vw, 7rem);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #fff;
+  text-shadow: 0 0 30px rgba(165, 243, 252, 0.9), 0 0 80px rgba(129, 140, 248, 0.8);
+}
+
+.fx-domain-title strong {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 3vw, 1.6rem);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #e0e7ff;
+}
+
+.fx-domain-title em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: #a5b4fc;
+}
+
+@keyframes domainTitle {
+  0% { opacity: 0; transform: scale(1.4); filter: blur(12px); }
+  15% { opacity: 1; transform: scale(1); filter: blur(0); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: scale(0.96); }
+}
+
+/* ── Geass ─────────────────────────────────────────────────────────────── */
+.fx-geass {
+  flex-direction: column;
+  gap: 1rem;
+  background: radial-gradient(circle at center, rgba(220, 38, 38, 0.55), rgba(69, 10, 10, 0.88) 55%, rgba(0, 0, 0, 0.94));
+}
+
+.fx-geass-sigil {
+  width: min(360px, 70vw);
+  fill: #ff1f4b;
+  filter: drop-shadow(0 0 18px #ff1f4b) drop-shadow(0 0 60px rgba(255, 31, 75, 0.7));
+  animation: geassSigil 3s ease-out forwards;
+}
+
+@keyframes geassSigil {
+  0% { transform: scale(0.2) rotate(-20deg); opacity: 0; }
+  20% { transform: scale(1.1) rotate(0); opacity: 1; }
+  30% { transform: scale(1); }
+  100% { transform: scale(1.05); opacity: 1; }
+}
+
+.fx-geass-text {
+  display: grid;
+  justify-items: center;
+  gap: 0.2rem;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.fx-geass-line {
+  min-height: 1.5em;
+  font-family: var(--font-mono);
+  font-size: clamp(0.8rem, 2.4vw, 1.05rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fecaca;
+}
+
+.fx-geass-text strong {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 12vw, 6.5rem);
+  letter-spacing: 0.12em;
+  color: #fff;
+  text-shadow: 0 0 30px #ff1f4b;
+  animation: obey 3s ease-out forwards;
+}
+
+@keyframes obey {
+  0%, 45% { opacity: 0; transform: scale(1.6); }
+  55% { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; }
+}
+
+.otaku-card.is-commanded {
+  animation: bow 900ms var(--bow-delay, 0ms) ease-in-out both;
+  border-color: rgba(255, 31, 75, 0.7);
+  box-shadow: 0 0 40px rgba(255, 31, 75, 0.25);
+}
+
+@keyframes bow {
+  0%, 100% { transform: none; }
+  45% { transform: translateY(10px) scale(0.985) rotateX(8deg); }
+}
+
+/* ── Za Warudo ─────────────────────────────────────────────────────────── */
+.fx-zawarudo {
+  flex-direction: column;
+  background: transparent;
+}
+
+.fx-zawarudo-wave {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  translate: -50% -50%;
+  background: radial-gradient(circle, #ffffff 40%, #e9d5ff 70%, #a855f7);
+  animation: worldWave 1.3s cubic-bezier(0.5, 0, 0.3, 1) forwards;
+}
+
+@keyframes worldWave {
+  0% { transform: scale(0); }
+  55% { transform: scale(170); }
+  100% { transform: scale(170); opacity: 0; }
+}
+
+.fx-zawarudo-text {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
+  text-align: center;
+  padding: 1.2rem 2rem;
+  border-radius: 18px;
+  background: rgba(10, 6, 20, 0.6);
+  backdrop-filter: blur(6px);
+}
+
+.fx-zawarudo-text strong {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 10vw, 5.5rem);
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, #fde68a, #fbbf24 40%, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.5));
+}
+
+.fx-zawarudo-sub {
+  font-family: var(--font-mono);
+  letter-spacing: 0.2em;
+  color: #e9d5ff;
+}
+
+.fx-zawarudo-count {
+  min-height: 1.4em;
+  font-size: 0.85rem;
+  color: #fde68a;
+  font-variant-numeric: tabular-nums;
+}
+
+.is-time-stopped .otaku-page-wrapper,
+.is-time-stopped .pet-wrapper {
+  filter: invert(1) hue-rotate(180deg) sepia(0.5) saturate(1.6) contrast(1.1);
+  transition: filter 400ms ease;
+}
+
+/* ── Super Saiyan ──────────────────────────────────────────────────────── */
+.fx-saiyan {
+  background: radial-gradient(circle at center, rgba(253, 230, 138, 0.55), rgba(251, 191, 36, 0.25) 45%, transparent 75%);
+  pointer-events: none;
+}
+
+.fx-saiyan-text {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8vw, 5rem);
+  font-weight: 800;
+  color: #fffbeb;
+  text-shadow: 0 0 20px #fbbf24, 0 0 60px #f59e0b;
+  animation: saiyanScream 1.3s ease-out forwards;
+}
+
+@keyframes saiyanScream {
+  0% { transform: scale(0.6); opacity: 0; }
+  25% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1.2); opacity: 0; }
+}
+
+.speech-entry.is-super-saiyan {
+  border-color: rgba(251, 191, 36, 0.85);
+  background: linear-gradient(180deg, rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.02));
+  animation: ssjAura 1.1s ease-in-out infinite alternate;
+}
+
+.speech-entry.is-super-saiyan .speech-portrait {
+  border-color: #fbbf24;
+  box-shadow: 0 0 26px rgba(251, 191, 36, 0.7);
+}
+
+.speech-entry.is-super-saiyan blockquote {
+  color: #fef3c7;
+  border-left-color: #fbbf24;
+}
+
+@keyframes ssjAura {
+  from { box-shadow: 0 0 22px rgba(251, 191, 36, 0.35), 0 -8px 40px rgba(253, 224, 71, 0.2), inset 0 0 20px rgba(251, 191, 36, 0.12); }
+  to { box-shadow: 0 0 44px rgba(251, 191, 36, 0.6), 0 -18px 70px rgba(253, 224, 71, 0.35), inset 0 0 34px rgba(251, 191, 36, 0.22); }
+}
+
+.ssj-sparks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.ssj-spark {
+  position: absolute;
+  width: 3px;
+  height: 34px;
+  background: linear-gradient(180deg, transparent, #fffbeb, #60a5fa, transparent);
+  clip-path: polygon(50% 0, 100% 30%, 0 55%, 100% 75%, 50% 100%, 60% 70%, 0 45%, 100% 20%);
+  rotate: var(--rot, 0deg);
+  opacity: 0;
+  filter: drop-shadow(0 0 4px #93c5fd);
+  animation: spark 1.8s steps(1) infinite;
+}
+
+@keyframes spark {
+  0%, 100% { opacity: 0; }
+  6% { opacity: 1; }
+  10% { opacity: 0; }
+  13% { opacity: 0.9; }
+  17% { opacity: 0; }
+}
+
+/* ── Codex complete: the dossier label turns gold ──────────────────────── */
+.codex-complete .secret-label {
+  color: var(--saiyan-gold);
+  border-color: rgba(251, 191, 36, 0.45);
+  background: rgba(251, 191, 36, 0.1);
+  box-shadow: 0 0 22px rgba(251, 191, 36, 0.25);
+}
+
+/* ── Help dialog ───────────────────────────────────────────────────────── */
+.help-dialog {
+  margin: auto;
+  width: min(520px, calc(100vw - 2rem));
+  padding: 1.6rem;
+  border-radius: 18px;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  background: rgba(10, 14, 26, 0.97);
+  color: var(--text-main);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8), 0 0 40px -10px rgba(168, 85, 247, 0.4);
+}
+
+.help-dialog::backdrop {
+  background: rgba(2, 4, 10, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.help-dialog header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.help-dialog h2 { font-size: 1.2rem; }
+
+.help-close {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.help-close:hover { color: var(--text-main); background: rgba(255, 255, 255, 0.05); }
+
+.help-list {
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.help-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+}
+
+.help-list kbd { min-width: 2rem; text-align: center; font-size: 0.8rem; }
+
+.help-footnote {
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* ── Reduced motion: keep effects legible, drop the heavy movement ─────── */
+@media (prefers-reduced-motion: reduce) {
+  .fx-domain-title,
+  .fx-geass-sigil,
+  .fx-geass-text strong,
+  .fx-saiyan-text { animation: none; opacity: 1; }
+  .fx-zawarudo-wave { display: none; }
+  .is-shaking body { animation: none; }
+}
+
+/* ── Opening sequence (modules/fx-opening.js) ──────────────────────────── */
+.fx-opening {
+  background: #040509;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.op-flash {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.fx-opening.op-beat .op-flash { animation: opBeat 220ms ease-out; }
+
+@keyframes opBeat { 0% { opacity: 0.55; } 100% { opacity: 0; } }
+
+.op-cut {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 250ms ease;
+}
+
+.op-show-logo .op-cut--logo,
+.op-show-alias .op-cut--alias,
+.op-show-cast .op-cut--cast,
+.op-show-credits .op-cut--credits,
+.op-show-title .op-cut--title { opacity: 1; visibility: visible; }
+
+/* each later cut hides the earlier ones */
+.op-show-alias .op-cut--logo,
+.op-show-cast .op-cut--alias,
+.op-show-credits .op-cut--cast,
+.op-show-title .op-cut--credits { opacity: 0; visibility: hidden; }
+
+.op-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.4em;
+  color: var(--accent-pink);
+}
+
+.op-cut--logo strong {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 12vw, 7.5rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #fff;
+  text-shadow: 3px 0 #ff0844, -3px 0 #22d3ee;
+  animation: opGlitch 1.6s steps(2) infinite;
+}
+
+.op-cut--logo em {
+  font-style: normal;
+  font-family: var(--font-mono);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+@keyframes opGlitch {
+  0%, 92%, 100% { transform: none; text-shadow: 3px 0 #ff0844, -3px 0 #22d3ee; }
+  94% { transform: translate(-6px, 2px) skewX(-8deg); text-shadow: -6px 0 #ff0844, 6px 0 #22d3ee; }
+  97% { transform: translate(5px, -2px); }
+}
+
+.op-alias {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 9vw, 6rem);
+  font-weight: 800;
+  line-height: 1;
+  opacity: 0;
+}
+
+.op-alias--1 { color: #ff0844; }
+.op-alias--2 { color: #6366f1; }
+.op-alias--3 { color: #e8f2fb; }
+
+.op-show-alias .op-alias { animation: opSlam 420ms cubic-bezier(0.2, 1.4, 0.4, 1) forwards; }
+.op-show-alias .op-alias--2 { animation-delay: 450ms; }
+.op-show-alias .op-alias--3 { animation-delay: 900ms; }
+
+@keyframes opSlam {
+  0% { opacity: 0; transform: scale(2.4) rotate(-4deg); filter: blur(8px); }
+  100% { opacity: 1; transform: none; filter: none; }
+}
+
+.op-speedlines {
+  position: absolute;
+  inset: -50%;
+  background: repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.08) 0deg 1.2deg, transparent 1.2deg 7deg);
+  animation: opSpin 6s linear infinite;
+}
+
+@keyframes opSpin { to { rotate: 360deg; } }
+
+.op-cast {
+  position: relative;
+  display: flex;
+  gap: clamp(0.4rem, 1.5vw, 1rem);
+  padding: 0 1rem;
+}
+
+.op-cast-card {
+  width: clamp(70px, 13vw, 150px);
+  opacity: 0;
+  transform: translateY(40px) skewY(-6deg);
+}
+
+.op-show-cast .op-cast-card { animation: opCard 500ms calc(var(--i) * 360ms) cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+
+@keyframes opCard { to { opacity: 1; transform: skewY(-6deg); } }
+
+.op-cast-card img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 30px rgba(255, 8, 68, 0.45);
+}
+
+.op-cast-card figcaption {
+  margin-top: 0.4rem;
+  font-size: clamp(0.55rem, 1.4vw, 0.75rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.op-cut--credits p { display: grid; gap: 0.1rem; margin: 0.4rem 0; }
+.op-cut--credits small { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted); }
+.op-cut--credits strong { font-family: var(--font-display); font-size: clamp(1.2rem, 4vw, 2rem); color: #fff; }
+
+.op-cut--title strong {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8vw, 5.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #ff0844, #ffb199 40%, #6366f1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.op-cut--title span { color: var(--text-secondary); letter-spacing: 0.3em; font-size: 0.8rem; text-transform: uppercase; animation: opBlink 1.2s ease-in-out infinite; }
+
+@keyframes opBlink { 50% { opacity: 0.3; } }
+
+.op-skip {
+  position: absolute;
+  right: 1.2rem;
+  bottom: calc(1.2rem + env(safe-area-inset-bottom, 0px));
+  z-index: 6;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ── SSR pull cinematic ────────────────────────────────────────────────── */
+.fx-ssr {
+  flex-direction: column;
+  background: radial-gradient(circle at center, rgba(120, 53, 15, 0.85), rgba(0, 0, 0, 0.94) 70%);
+  overflow: hidden;
+}
+
+.fx-ssr-rays {
+  position: absolute;
+  inset: -50%;
+  background: repeating-conic-gradient(from 0deg, rgba(253, 224, 71, 0.22) 0deg 6deg, transparent 6deg 18deg);
+  animation: opSpin 8s linear infinite;
+}
+
+.fx-ssr-card {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
+  animation: ssrRise 800ms cubic-bezier(0.2, 1.3, 0.4, 1);
+}
+
+.fx-ssr-card img {
+  width: min(220px, 45vw);
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 3px solid #fbbf24;
+  box-shadow: 0 0 60px rgba(251, 191, 36, 0.8);
+}
+
+.fx-ssr-card strong {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #fde68a;
+  text-shadow: 0 0 24px #f59e0b;
+}
+
+.fx-ssr-card span { color: #fff; font-weight: 700; letter-spacing: 0.08em; }
+
+@keyframes ssrRise { from { transform: translateY(60px) scale(0.6); opacity: 0; } }
+
+/* ── Giga Drill Break (Spiral Drill victory) ───────────────────────────── */
+.fx-giga-drill {
+  background: radial-gradient(circle at center, rgba(124, 45, 18, 0.7), rgba(0, 0, 0, 0.95) 70%);
+  overflow: hidden;
+}
+
+.fx-giga-spiral {
+  position: absolute;
+  width: 160vmax;
+  height: 160vmax;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, #f97316 0deg 10deg, #22d3ee 10deg 14deg, transparent 14deg 30deg);
+  mask: radial-gradient(circle, #000 5%, transparent 60%);
+  -webkit-mask: radial-gradient(circle, #000 5%, transparent 60%);
+  animation: opSpin 1.2s linear infinite;
+}
+
+.fx-giga-text {
+  position: relative;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 9vw, 6rem);
+  font-weight: 800;
+  font-style: italic;
+  color: #fff;
+  text-shadow: 0 0 20px #f97316, 0 0 60px #dc2626, 4px 4px 0 #22d3ee;
+  animation: saiyanScream 2.6s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .op-alias, .op-cast-card { opacity: 1; transform: none; animation: none !important; }
+  .op-speedlines, .fx-ssr-rays, .fx-giga-spiral { animation: none; }
+}

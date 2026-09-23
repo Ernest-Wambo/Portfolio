@@ -1,0 +1,114 @@
+/* ==========================================================================
+   OTAKU ZONE — FACTION SKINS
+   Token-only overrides applied via html[data-skin="…"] (modules/faction-skins.js).
+   Add a skin: a block here + an entry in js/data/skins.js. Nothing else.
+   ========================================================================== */
+
+html[data-skin="akatsuki"] {
+  --bg-primary: #0b0507;
+  --bg-secondary: #150a0d;
+  --surface-color: rgba(24, 10, 14, 0.78);
+  --surface-hover: rgba(40, 14, 20, 0.9);
+  --accent-pink: #dc2626;
+  --accent-orange: #fca5a5;
+  --accent-indigo: #7f1d1d;
+  --accent-cyan: #f87171;
+  --accent-blue: #ef4444;
+  --accent-moon: #fecaca;
+  --card-border: rgba(220, 38, 38, 0.25);
+  --card-glow: rgba(220, 38, 38, 0.25);
+  --page-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='220'%3E%3Cpath d='M40 120q-14 0-12-14q2-12 18-10q2-18 22-15q12-15 30-3q17-3 20 13q14 5 8 19q-5 11-18 8q-7 10-22 6q-12 9-27 0q-12 5-19-4z' fill='none' stroke='%23dc2626' stroke-opacity='.16' stroke-width='3'/%3E%3C/svg%3E");
+}
+
+html[data-skin="survey-corps"] {
+  --bg-primary: #0c120d;
+  --bg-secondary: #121a13;
+  --surface-color: rgba(18, 28, 20, 0.78);
+  --surface-hover: rgba(26, 40, 28, 0.9);
+  --accent-pink: #65a30d;
+  --accent-orange: #d6b37a;
+  --accent-indigo: #b45309;
+  --accent-cyan: #a3e635;
+  --accent-blue: #84cc16;
+  --accent-moon: #e7e5e4;
+  --card-border: rgba(101, 163, 13, 0.25);
+  --card-glow: rgba(101, 163, 13, 0.22);
+  --page-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='200'%3E%3Cg fill='none' stroke-opacity='.12' stroke-width='3'%3E%3Cpath d='M120 70q-40-30-80-10q30 4 40 30q-25-4-40 10q35-2 50 20q-15 4-20 18q30-8 50-30z' stroke='%23e7e5e4'/%3E%3Cpath d='M120 70q40-30 80-10q-30 4-40 30q25-4 40 10q-35-2-50 20q15 4 20 18q-30-8-50-30z' stroke='%232563eb'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+html[data-skin="britannia"] {
+  --bg-primary: #0f0a1a;
+  --bg-secondary: #160f26;
+  --surface-color: rgba(26, 16, 44, 0.78);
+  --surface-hover: rgba(38, 24, 64, 0.9);
+  --accent-pink: #a855f7;
+  --accent-orange: #fbbf24;
+  --accent-indigo: #7c3aed;
+  --accent-cyan: #fde68a;
+  --accent-blue: #c084fc;
+  --accent-moon: #e9d5ff;
+  --card-border: rgba(168, 85, 247, 0.28);
+  --card-border-hover: #fbbf24;
+  --card-glow: rgba(251, 191, 36, 0.2);
+  --page-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cpath d='M45 15l12 30-12 30-12-30z' fill='none' stroke='%23fbbf24' stroke-opacity='.09' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+html[data-skin="amestris"] {
+  --bg-primary: #070d1c;
+  --bg-secondary: #0b1428;
+  --surface-color: rgba(12, 22, 44, 0.8);
+  --surface-hover: rgba(18, 32, 62, 0.9);
+  --accent-pink: #2563eb;
+  --accent-orange: #f59e0b;
+  --accent-indigo: #1d4ed8;
+  --accent-cyan: #fcd34d;
+  --accent-blue: #60a5fa;
+  --accent-moon: #bfdbfe;
+  --card-border: rgba(37, 99, 235, 0.3);
+  --card-border-hover: #f59e0b;
+  --card-glow: rgba(245, 158, 11, 0.2);
+  --page-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cg fill='none' stroke='%23f59e0b' stroke-opacity='.07' stroke-width='2'%3E%3Ccircle cx='140' cy='140' r='100'/%3E%3Ccircle cx='140' cy='140' r='80'/%3E%3Cpath d='M140 40l87 150H53z'/%3E%3Cpath d='M140 240L53 90h174z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+html[data-skin="rhine"] {
+  --bg-primary: #101213;
+  --bg-secondary: #171a1c;
+  --surface-color: rgba(28, 31, 33, 0.82);
+  --surface-hover: rgba(40, 44, 47, 0.92);
+  --accent-pink: #eab308;
+  --accent-orange: #cbd5e1;
+  --accent-indigo: #64748b;
+  --accent-cyan: #38bdf8;
+  --accent-blue: #94a3b8;
+  --accent-moon: #e2e8f0;
+  --card-border: rgba(148, 163, 184, 0.22);
+  --card-border-hover: #eab308;
+  --card-glow: rgba(234, 179, 8, 0.18);
+  --page-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cg stroke='%2394a3b8' stroke-opacity='.08' stroke-width='1.5' fill='none'%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3Cpath d='M60 30v18M60 72v18M30 60h18M72 60h18'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+html[data-skin="spiral"] {
+  --bg-primary: #12060a;
+  --bg-secondary: #1a0a10;
+  --surface-color: rgba(34, 12, 18, 0.8);
+  --surface-hover: rgba(50, 16, 24, 0.9);
+  --accent-pink: #f97316;
+  --accent-orange: #fde047;
+  --accent-indigo: #db2777;
+  --accent-cyan: #22d3ee;
+  --accent-blue: #06b6d4;
+  --accent-moon: #fed7aa;
+  --card-border: rgba(249, 115, 22, 0.28);
+  --card-border-hover: #22d3ee;
+  --card-glow: rgba(249, 115, 22, 0.25);
+  --page-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M100 100m-4 0a4 4 0 1 1 8 0a12 12 0 1 1-24 0a20 20 0 1 1 40 0a28 28 0 1 1-56 0a36 36 0 1 1 72 0' fill='none' stroke='%23f97316' stroke-opacity='.1' stroke-width='3'/%3E%3C/svg%3E");
+}
+
+/* Faction accent on the header label, so the switch reads instantly */
+html[data-skin] .otaku-secret-header .secret-label {
+  color: var(--accent-pink);
+  border-color: color-mix(in srgb, var(--accent-pink) 40%, transparent);
+  background: color-mix(in srgb, var(--accent-pink) 12%, transparent);
+}
+
+html[data-skin] body { transition: background-color 500ms ease; }
